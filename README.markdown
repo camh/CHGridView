@@ -10,6 +10,8 @@ I want this to be the last grid view I make. Right now, it's basically a UITable
 
 CHGridView is modeled after UITableView. You initialize CHGridView, set a delegate and data source, then give it tiles. It's designed to be as easy to use as UITableView.
 
+**CHGridView is not production-level software yet. Don't use it in shipping software.**
+
 ###Description of classes:
 
 - CHGridView: UIScrollView subclass that handles loading and display of tiles and section titles.
