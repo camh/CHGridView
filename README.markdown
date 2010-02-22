@@ -20,7 +20,7 @@ CHGridView is modeled after UITableView. You initialize CHGridView, set a delega
 
 ###Usage:
 
-[Download a sample view controller](http://cameron.io/files/CHGridViewController.zip).
+[Download a sample view controller class](http://cameron.io/files/CHGridViewController.zip)
 
 Exactly like UITableView. Just implement the two required data source methods: `numberOfTilesInSection` and `tileForIndexPath`. CHGridView assumes there is at least one section. The method `tileForIndexPath` works very much like UITableView; CHGridView reuses tiles just like UITableView reuses cells. Call `dequeueReusableTileWithIdentifier` to get a reusable tile, if it's `nil`, `init` and `autorelease` a new tile and return it.
 
