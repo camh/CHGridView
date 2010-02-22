@@ -41,10 +41,11 @@ If you disable scrolling with `setScrollingEnabled`, you can probably use this a
 
 ###Roadmap (roughly in order):
 
-- Same speed and performance as iPhone's Photos app grid view
+- Match speed and performance found in iPhone's Photos app grid view
 - More UITableView cloning, like scrolling to a tile at a specific indexPath
 - Tile labels
 - Flexible per-line setting (maybe a range?)
+- Horizontal scrolling and paging support
 - Add/remove tile animation
 - Multiple selection support
 - Nice re-ordering
