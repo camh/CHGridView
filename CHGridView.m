@@ -28,6 +28,10 @@
 @implementation CHGridView
 @synthesize dynamicallyResizeTilesToFillSpace, allowsSelection, padding, rowHeight, perLine, sectionTitleHeight, shadowOffset, shadowColor, shadowBlur;
 
+- (id)init{
+	return [self initWithFrame:CGRectZero];
+}
+
 - (id)initWithFrame:(CGRect)frame{
 	if(self = [super initWithFrame:frame]){
 		if(visibleTiles == nil)
@@ -46,7 +50,7 @@
 		
 		allowsSelection = YES;
 		dynamicallyResizeTilesToFillSpace = NO;
-		padding = CGSizeMake(20.0, 20.0);
+		padding = CGSizeMake(10.0, 10.0);
 		rowHeight = 100.0;
 		perLine = 5;
 		sectionTitleHeight = 25.0;
@@ -54,6 +58,8 @@
 		shadowOffset = CGSizeMake(0, 0);
 		shadowColor = [[UIColor colorWithWhite:0.0 alpha:0.5] retain];
 		shadowBlur = 0.0;
+		
+		[self setBackgroundColor:[UIColor whiteColor]];
 	}
 	return self;
 }
@@ -213,6 +219,8 @@
 }
 
 - (void)reloadData{
+	if(dataSource == nil) return;
+	
 	[self removeAllSubviews];
 	[visibleTiles removeAllObjects];
 	[visibleSectionTitles removeAllObjects];
@@ -253,6 +261,8 @@
 #pragma mark view and layout methods
 
 - (void)layoutSubviews{
+	if(dataSource == nil) return;
+	
 	CGRect b = [self bounds];
 	[self setContentSize:CGSizeMake(b.size.width, [layout contentHeight])];
 	float contentOffsetY = self.contentOffset.y;

@@ -19,18 +19,21 @@
 		selected = NO;
 		reuseIdentifier = [reuseId copy];
 		
-		[self setBackgroundColor:[UIColor whiteColor]];
-		[self setOpaque:YES];
-		[self setContentMode:UIViewContentModeRedraw];
+		contentBackgroundColor = [[UIColor whiteColor] retain];
 		
 		shadowOffset = CGSizeMake(0, 0);
 		shadowColor = [[UIColor colorWithWhite:0.0 alpha:0.5] retain];
 		shadowBlur = 0.0;
+		
+		[self setBackgroundColor:[UIColor whiteColor]];
+		[self setOpaque:YES];
+		[self setContentMode:UIViewContentModeRedraw];
 	}
 	return self;
 }
 
 - (void)dealloc {
+	[shadowColor release];
 	[reuseIdentifier release];
     [super dealloc];
 }
@@ -66,7 +69,7 @@
 		if(!selected){
 			CGContextSaveGState(c);
 			CGContextSetShadowWithColor(c, newShadowOffset, shadowBlur, [shadowColor CGColor]);
-			[self.backgroundColor set];
+			[contentBackgroundColor set];
 			CGContextFillRect(c, contentRect);
 			CGContextRestoreGState(c);
 		}else {

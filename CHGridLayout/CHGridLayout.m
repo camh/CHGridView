@@ -166,7 +166,8 @@
 
 - (CGRect)tileFrameForIndexPath:(CHGridIndexPath)indexPath{
 	NSMutableArray *sectionTiles = [_index objectAtIndex:indexPath.section];
-	return [[sectionTiles objectAtIndex:indexPath.tileIndex] rect];
+	if(indexPath.tileIndex >= sectionTiles.count) return CGRectZero;
+	else return [[sectionTiles objectAtIndex:indexPath.tileIndex] rect];
 }
 
 - (CHGridIndexRange)rangeOfVisibleIndexesForContentOffset:(CGFloat)offset andHeight:(CGFloat)height{
