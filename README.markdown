@@ -12,7 +12,7 @@ CHGridView is modeled after UITableView. You initialize CHGridView, set a delega
 
 ###Usage:
 
-Exactly like UITableView. Just implement the two required data source methods: `numberOfTilesInSection` and `tileForIndexPath`. CHGridView assumes there is at least one section. The method `tileForIndexPath` works very much like UITableView; CHGridView reuses tiles just like UITableView reuses cells. You can download a sample `GridViewController` as an base or example.
+Exactly like UITableView. Just implement the two required data source methods: `numberOfTilesInSection` and `tileForIndexPath`. CHGridView assumes there is at least one section. The method `tileForIndexPath` works very much like UITableView; CHGridView reuses tiles just like UITableView reuses cells. Call `dequeueReusableTileWithIdentifier` to get a reusable tile, if it's `nil`, `init` and `autorelease` a new tile and return it.
 
 There's two basic styles to use in GHGridView, one that resembles the iPhone Photos application, and one that mimics iPhoto and the iPad photo grid.
 
