@@ -15,7 +15,7 @@
 - (void)loadVisibleSectionTitlesForSectionRange:(CHSectionRange)range;
 - (void)loadVisibleTilesForIndexPathRange:(CHGridIndexRange)range;
 - (void)loadVisibleTileForIndexPath:(CHGridIndexPath)indexPath;
-- (void)reuseTilesOutsideOfIndexPathRange:(CHGridIndexRange)range;
+- (void)reuseHiddenTiles;
 - (void)reuseTile:(CHTileView *)tile;
 - (void)removeSectionTitleNotInRange:(CHSectionRange)range;
 - (void)removeAllSubviews;
@@ -140,7 +140,7 @@
 		}
 	}
 	
-	[self reuseTilesOutsideOfIndexPathRange:range];
+	[self reuseHiddenTiles];
 }
 
 - (void)loadVisibleTileForIndexPath:(CHGridIndexPath)indexPath{
@@ -177,12 +177,15 @@
 	[visibleTiles addObject:tile];
 }
 
-- (void)reuseTilesOutsideOfIndexPathRange:(CHGridIndexRange)range{
+- (void)reuseHiddenTiles{
 	NSMutableArray *toReuse = [[NSMutableArray alloc] init];
 	
+	CGRect b = self.bounds;
+	CGFloat contentOffsetY = self.contentOffset.y;
+	float pixelMargin = rowHeight * 2;
+	
 	for(CHTileView *tile in visibleTiles){
-		if((tile.indexPath.section <= range.start.section && tile.indexPath.tileIndex < range.start.tileIndex) ||
-		   (tile.indexPath.section >= range.end.section && tile.indexPath.tileIndex > range.end.tileIndex)){
+		if(tile.frame.origin.y + tile.frame.size.height < (contentOffsetY - pixelMargin) || tile.frame.origin.y > (contentOffsetY + b.size.height + pixelMargin)){
 			[toReuse addObject:tile];
 		}
 	}
@@ -270,7 +273,7 @@
 	CHGridIndexRange tileRange = [layout rangeOfVisibleIndexesForContentOffset:contentOffsetY andHeight:b.size.height];
 	[self loadVisibleTilesForIndexPathRange:tileRange];
 	
-	if([gridDelegate respondsToSelector:@selector(visibleTilesChangedTo:)]) [gridDelegate visibleTilesChangedTo:visibleTiles.count];
+	//if([gridDelegate respondsToSelector:@selector(visibleTilesChangedTo:)]) [gridDelegate visibleTilesChangedTo:visibleTiles.count];
 	
 	if(sections <= 1) return;
 	

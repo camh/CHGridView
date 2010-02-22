@@ -38,7 +38,7 @@ If you disable scrolling with `setScrollingEnabled`, you can probably use this a
 
 ###Behind the scenes:
 
-- CHGridView only loads visible tiles and section titles, plus two rows above and beneath. On the iPhone there's only about 30 to 60 tiles loaded at a time.
+- CHGridView only loads visible tiles and section titles, plus two rows above and beneath. On the iPhone there's only about 30 tiles loaded at a time.
 - CHTileView shadows are not transparent, they are rendered onto the same background color as CHGridView. It's possible to change it if you long for the scrolling performance of Android or WebOS.
 - CHImageTileView supports scaling images up/down to fit its frame (and preserves aspect ratio) but it's not fast enough to use. The property is called `scalesImageToHeight` and you should never use it.
 - Section titles are only transparent when they need to be, otherwise they are opaque. If you subclass CHSectionTitleView, you'll need to check [self isOpaque] to deal with transparency on your own.
@@ -56,7 +56,7 @@ If you disable scrolling with `setScrollingEnabled`, you can probably use this a
 
 ###Performance:
 
-I tested CHGridView informally with a test application on both my iPhones. For my data source, I used 31 images to populate 1,984 tiles separated with 64 sections. They were exported from iPhoto as PNGs with a maximum width of 160 pixels. The images were drawn centered in CHImageTileView. Scrolling performance is not as good as Apple's Photos grid view, especially on my original iPhone.
+I've tested CHGridView informally with a test application on both my iPhones. For my data source, I used 31 images to populate 1,984 tiles separated with 64 sections. They were exported from iPhoto as PNGs with a maximum width of 160 pixels. The images were drawn centered in CHImageTileView. Scrolling performance is not as good as Apple's Photos grid view, especially on my original iPhone.
 
 - Original iPhone: average 10 - 25 fps.
 - iPhone 3G3: average 30 - 50 fps.
