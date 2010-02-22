@@ -10,17 +10,17 @@ CHGridView is modeled after UITableView. You initialize CHGridView, set a delega
 - CHGridLayoutTile: A simple object that stores indexPath and rect for a tile.
 - CHGridLayoutSection: Simple object to store section index and its Y co-ordinate position.
 
-There's two basic styles to use in GHGridView, one that resembles the iPhone Photos application, and one that mimics iPhoto and the iPad photo grid.
-
 ###Usage:
 
 Exactly like UITableView. Just implement the two required data source methods: `numberOfTilesInSection` and `tileForIndexPath`. CHGridView assumes there is at least one section. The method `tileForIndexPath` works very much like UITableView; CHGridView reuses tiles just like UITableView reuses cells. You can download a sample `GridViewController` as an base or example.
 
-Row height, tiles per line, padding, section title height and shadow are all properties of CHGridView. These are not meant to change often like the data source and delegate methods. However, if you do set them, make sure to call `reloadData` to recalculate the layout.
+There's two basic styles to use in GHGridView, one that resembles the iPhone Photos application, and one that mimics iPhoto and the iPad photo grid.
+
+Row height, tiles per line, padding, section title height and shadow are all properties of CHGridView. These are not meant to change often like the data source and delegate methods. However, if you do change them, make sure to call `reloadData` to recalculate the layout.
 
 Shadows are drawn in Core Graphics and add to your padding. Adjust both until a desirable result is achieved. You can set shadows for a CHTileView directly, but don't; set shadow properties in CHGridView and they will be applied to all tiles.
 
-Orientation and resizing are supported. Section titles and tiles are set to the correct autoresizing mask, but you should call `reloadData` after you resize CHGridView for optimal re-layout.
+Orientation changes and resizing are supported. Section titles and tiles are set to the correct autoresizing mask, but you should call `reloadData` after you resize CHGridView for optimal re-layout. You'll need to set CHGridView properties and `reloadData` as needed in your view controller's re-orientation methods.
 
 If you disable scrolling with `setScrollingEnabled`, you can probably use this as a un-scrollable grid view, but I haven't tested it.
 
@@ -28,8 +28,8 @@ If you disable scrolling with `setScrollingEnabled`, you can probably use this a
 
 - CHGridView only loads visible tiles and section titles, plus two rows above and beneath. On the iPhone there's only about 30 to 60 tiles loaded at a time.
 - CHTileView shadows are not transparent, they are rendered onto the same background color as CHGridView. It's possible to change it if you long for the scrolling performance of Android or WebOS.
-- CHTileView supports scaling images up/down to fit its frame (and preserves aspect ratio) but it's not fast enough to use.
-- Section titles are only transparent when they are floated above the content, otherwise they are opaque. 
+- CHImageTileView supports scaling images up/down to fit its frame (and preserves aspect ratio) but it's not fast enough to use. The property is called `scalesImageToHeight` and you should never use it.
+- Section titles are only transparent when they need to be, otherwise they are opaque. If you subclass CHSectionTitleView, you'll need to check [self isOpaque] to deal with transparency on your own.
 
 ###Roadmap (roughly in order):
 
@@ -48,4 +48,4 @@ I tested CHGridView informally with a test application on both my iPhones. For m
 - Original iPhone: average 10 - 25 fps.
 - iPhone 3G3: average 30 - 50 fps.
 
-Admittedly, performance could be better. I'm not an incredibly experienced programmer, so I'm not privy to a lot of formal programming knowledge. If you see something that could be better, send an email to me@cameron.io.
+Admittedly, performance could be better. I'm not an incredibly experienced programmer, so I'm not privy to a lot of formal programming knowledge. If you see something that could be better, send an email to [me@cameron.io](mailto:me@cameron.io).
