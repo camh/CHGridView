@@ -1,3 +1,7 @@
+#CHGridView
+
+![A screenshot of CHGridView](http://cameron.io/files/CHGridView-sizedToGrid.png)
+
 CHGridView is modeled after UITableView. You initialize CHGridView, set a delegate and data source, then give it tiles.
 
 ###Description of classes:
@@ -14,7 +18,7 @@ CHGridView is modeled after UITableView. You initialize CHGridView, set a delega
 
 Exactly like UITableView. Just implement the two required data source methods: `numberOfTilesInSection` and `tileForIndexPath`. CHGridView assumes there is at least one section. The method `tileForIndexPath` works very much like UITableView; CHGridView reuses tiles just like UITableView reuses cells. Call `dequeueReusableTileWithIdentifier` to get a reusable tile, if it's `nil`, `init` and `autorelease` a new tile and return it.
 
-There's two basic styles to use in GHGridView, one that resembles the iPhone Photos application, and one that mimics iPhoto and the iPad photo grid.
+There's two basic styles to use in GHGridView, one that resembles the iPhone Photos application, and one that mimics iPhoto and the iPad photo grid. The property that controls it is called `dynamicallyResizeTilesToFillSpace`. Set it to `YES` for the iPhone Photos app style.
 
 Row height, tiles per line, padding, section title height and shadow are all properties of CHGridView. These are not meant to change often like the data source and delegate methods. However, if you do change them, make sure to call `reloadData` to recalculate the layout.
 
