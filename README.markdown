@@ -2,7 +2,11 @@
 
 ![A screenshot of CHGridView](http://cameron.io/files/CHGridView-sizedToGrid.png) ![A second screenshot of CHGridView](http://cameron.io/files/CHGridView-centered.png)
 
-CHGridView is modeled after UITableView. You initialize CHGridView, set a delegate and data source, then give it tiles.
+###About:
+
+I've made a lot of grid views in the past eight months. I want this to be the last one. Right now, it's basically a UITableView clone with tiles instead of cells, but in the future I want it to be customizeable and flexible enough to reproduce paged icon views, handle un-scrollable grids, display 2000 images, show iPad-like photo stacks with pinch-to-open, and anything else that can be represented with a grid.
+
+CHGridView is modeled after UITableView. You initialize CHGridView, set a delegate and data source, then give it tiles. It's designed to be as easy to use as UITableView.
 
 ###Description of classes:
 
