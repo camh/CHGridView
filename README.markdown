@@ -1,6 +1,6 @@
 #CHGridView
 
-![A screenshot of CHGridView](http://cameron.io/files/CHGridView-sizedToGrid.png)
+![A screenshot of CHGridView](http://cameron.io/files/CHGridView-sizedToGrid.png) ![A second screenshot of CHGridView](http://cameron.io/files/CHGridView-centered.png)
 
 CHGridView is modeled after UITableView. You initialize CHGridView, set a delegate and data source, then give it tiles.
 
