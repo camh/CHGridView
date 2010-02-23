@@ -63,4 +63,4 @@ I've tested CHGridView informally with a test application on both my iPhones. Fo
 - Original iPhone: about 12 - 30 fps.
 - iPhone 3G3: about 30 - 50 fps.
 
-Admittedly, performance could be better. I'm not an incredibly experienced programmer, so I'm not privy to a lot of formal programming knowledge. If you see something that could be better, send an email to [me@cameron.io](mailto:me@cameron.io).
+Admittedly, performance could be better. If you see something that could be better, send an email to [me@cameron.io](mailto:me@cameron.io).
