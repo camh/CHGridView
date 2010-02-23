@@ -11,9 +11,11 @@
 #import "CHGridLayout.h"
 #import "CHGridLayoutTile.h"
 #import "CHGridLayoutSection.h"
+#include <sys/types.h>  
+#include <sys/sysctl.h>  
 
 @implementation CHGridLayout
-@synthesize gridWidth, contentHeight, padding, perLine, rowHeight, sectionTitleHeight, dynamicallyResizeTilesToFillSpace;
+@synthesize gridWidth, contentHeight, padding, perLine, preLoadMultiplier, rowHeight, sectionTitleHeight, dynamicallyResizeTilesToFillSpace;
 
 - (id)init{
 	if(self = [super init]){
@@ -22,6 +24,8 @@
 		
 		if(_sectionTitles == nil)
 			_sectionTitles = [[NSMutableArray alloc] init];
+		
+		preLoadMultiplier = 2.0;
 		
 		contentHeight = 0.0;
 		rowHeight = 0.0;
@@ -39,7 +43,19 @@
 
 - (void)setRowHeight:(CGFloat)f{
 	rowHeight = f;
-	pixelMargin = f * 2;
+	
+	pixelMargin = f * preLoadMultiplier;
+	
+	size_t size;  
+	sysctlbyname("hw.machine", NULL, &size, NULL, 0);  
+	char *machine = malloc(size);  
+	sysctlbyname("hw.machine", machine, &size, NULL, 0);  
+	NSString *platform = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];  
+	free(machine);
+	
+	if([platform isEqualToString:@"iPhone1,1"]) pixelMargin = f * 0.5;
+	if([platform isEqualToString:@"iPhone1,2"]) pixelMargin = f * 0.5;
+	if([platform isEqualToString:@"iPod1,1"]) pixelMargin = f * 0.5;
 }
 
 - (void)setSections:(int)sections{
@@ -166,8 +182,7 @@
 
 - (CGRect)tileFrameForIndexPath:(CHGridIndexPath)indexPath{
 	NSMutableArray *sectionTiles = [_index objectAtIndex:indexPath.section];
-	if(indexPath.tileIndex >= sectionTiles.count) return CGRectZero;
-	else return [[sectionTiles objectAtIndex:indexPath.tileIndex] rect];
+	return [[sectionTiles objectAtIndex:indexPath.tileIndex] rect];
 }
 
 - (CHGridIndexRange)rangeOfVisibleIndexesForContentOffset:(CGFloat)offset andHeight:(CGFloat)height{
@@ -176,7 +191,7 @@
 	
 	for(NSMutableArray *sectionArray in _index){
 		for(CHGridLayoutTile *tile in sectionArray){
-			if(tile.rect.origin.y < (height + offset + pixelMargin) && tile.rect.origin.y >= offset - pixelMargin){
+			if(tile.rect.origin.y < (height + offset + pixelMargin) && tile.rect.origin.y + tile.rect.size.height >= offset - pixelMargin){
 				if(first == NO){
 					indexRange.start = [tile indexPath];
 					first = YES;

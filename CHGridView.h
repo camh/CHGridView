@@ -47,6 +47,7 @@
 	id<CHGridViewDelegate>			gridDelegate;
 	
 	int								sections;
+	NSMutableArray					*sectionCounts;
 	
 	CHTileView						*selectedTile;
 
@@ -54,7 +55,8 @@
 	BOOL							dynamicallyResizeTilesToFillSpace;
 	BOOL							allowsSelection;
 	CGSize							padding;
-	CGFloat							rowHeight;
+	float							preLoadMultiplier;
+	float							rowHeight;
 	int								perLine;
 	float							sectionTitleHeight;
 	
@@ -66,7 +68,8 @@
 @property (nonatomic) BOOL						dynamicallyResizeTilesToFillSpace;
 @property (nonatomic) BOOL						allowsSelection;
 @property (nonatomic) CGSize					padding;
-@property (nonatomic) CGFloat					rowHeight;
+@property (nonatomic) float						preLoadMultiplier;
+@property (nonatomic) float						rowHeight;
 @property (nonatomic) int						perLine;
 @property (nonatomic) float						sectionTitleHeight;
 

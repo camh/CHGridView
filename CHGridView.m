@@ -45,6 +45,9 @@
 		if(layout == nil)
 			layout = [[CHGridLayout alloc] init];
 		
+		if(sectionCounts == nil)
+			sectionCounts = [[NSMutableArray alloc] init];
+		
 		sections = 1;
 		
 		allowsSelection = YES;
@@ -53,6 +56,8 @@
 		rowHeight = 100.0;
 		perLine = 5;
 		sectionTitleHeight = 25.0;
+		
+		preLoadMultiplier = 2.0;
 		
 		shadowOffset = CGSizeMake(0, 0);
 		shadowColor = [[UIColor colorWithWhite:0.0 alpha:0.5] retain];
@@ -65,6 +70,7 @@
 
 - (void)dealloc {
 	[shadowColor release];
+	[sectionCounts release];
 	[layout release];
 	[reusableTiles release];
 	[visibleSectionTitles release];
@@ -108,7 +114,7 @@
 			[sectionTitle setSection:i];
 			[sectionTitle setAutoresizingMask:(UIViewAutoresizingFlexibleWidth)];
 			
-			if(self.dragging || self.decelerating)
+			if(self.dragging || self.tracking || self.decelerating)
 				[self insertSubview:sectionTitle atIndex:self.subviews.count - 1];
 			else
 				[self insertSubview:sectionTitle atIndex:self.subviews.count];
@@ -122,17 +128,15 @@
 }
 
 - (void)loadVisibleTilesForIndexPathRange:(CHGridIndexRange)range{
-	int i;
+	int i, j, ground, ceiling;
 	for(i = range.start.section; i < range.end.section + 1; i++){
-		int j;
+		ground = 0;
+		ceiling = 0;
 		
-		int ground = 0;
 		if(i == range.start.section) ground = range.start.tileIndex;
 		else ground = 0;
-		
-		int ceiling = 0;
 		if(i == range.end.section) ceiling = range.end.tileIndex + 1;
-		else ceiling = [dataSource numberOfTilesInSection:i GridView:self];
+		else ceiling = [[sectionCounts objectAtIndex:i] intValue];
 		
 		for(j = ground; j < ceiling; j++){
 			[self loadVisibleTileForIndexPath:CHGridIndexPathMake(i, j)];
@@ -172,12 +176,13 @@
 	[tile setShadowColor:shadowColor];
 	[tile setShadowBlur:shadowBlur];
 	
-	[self insertSubview:tile atIndex:0];
+	[self addSubview:tile];
+	[self sendSubviewToBack:tile];
 	[visibleTiles addObject:tile];
 }
 
 - (void)reuseHiddenTiles{
-	NSMutableArray *toReuse = [[NSMutableArray alloc] init];
+	NSMutableArray *toReuse = [NSMutableArray array];
 	
 	CGRect b = self.bounds;
 	CGFloat contentOffsetY = self.contentOffset.y;
@@ -193,8 +198,6 @@
 	
 	[toReuse makeObjectsPerformSelector:@selector(removeFromSuperview)];
 	[visibleTiles removeObjectsInArray:toReuse];
-	
-	[toReuse release];
 }
 
 - (void)removeSectionTitleNotInRange:(CHSectionRange)range{
@@ -227,17 +230,22 @@
 		sections = 1;
 	}
 	
+	[sectionCounts removeAllObjects];
+	
 	[layout setGridWidth:b.size.width];
 	[layout setPadding:padding];
 	[layout setPerLine:perLine];
 	[layout setRowHeight:rowHeight];
+	[layout setPreLoadMultiplier:preLoadMultiplier];
 	[layout setSectionTitleHeight:sectionTitleHeight];
 	[layout setDynamicallyResizeTilesToFillSpace:dynamicallyResizeTilesToFillSpace];
 	
 	[layout setSections:sections];
 	int i;
 	for(i = 0; i < sections; i++){
-		[layout setNumberOfTiles:[dataSource numberOfTilesInSection:i GridView:self] ForSectionIndex:i];
+		int numberInSection = [dataSource numberOfTilesInSection:i GridView:self];
+		[sectionCounts addObject:[NSNumber numberWithInt:numberInSection]];
+		[layout setNumberOfTiles:numberInSection ForSectionIndex:i];
 	}
 
 	[layout updateLayout];
@@ -266,13 +274,13 @@
 	CHGridIndexRange tileRange = [layout rangeOfVisibleIndexesForContentOffset:contentOffsetY andHeight:b.size.height];
 	[self loadVisibleTilesForIndexPathRange:tileRange];
 	
-	if([gridDelegate respondsToSelector:@selector(visibleTilesChangedTo:)]) [gridDelegate visibleTilesChangedTo:visibleTiles.count];
+	//if([gridDelegate respondsToSelector:@selector(visibleTilesChangedTo:)]) [gridDelegate visibleTilesChangedTo:visibleTiles.count];
 	
-	if(sections <= 1) return;
-	
-	CHSectionRange sectionRange = [layout sectionRangeForContentOffset:contentOffsetY andHeight:b.size.height];
-	[self loadVisibleSectionTitlesForSectionRange:sectionRange];
-	[self calculateSectionTitleOffset];
+	if(sections > 1){
+		CHSectionRange sectionRange = [layout sectionRangeForContentOffset:contentOffsetY andHeight:b.size.height];
+		[self loadVisibleSectionTitlesForSectionRange:sectionRange];
+		[self calculateSectionTitleOffset];
+	}
 }
 
 - (void)removeAllSubviews{

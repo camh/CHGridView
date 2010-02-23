@@ -37,18 +37,20 @@ static CHSectionRange CHSectionRangeMake(int start, int end){
 	float				contentHeight;
 	CGSize				padding;
 	int					perLine;
+	float				preLoadMultiplier;
 	float				rowHeight;
 	float				pixelMargin;
 	float				sectionTitleHeight;
 	BOOL				dynamicallyResizeTilesToFillSpace; 
 }
 
-@property (nonatomic) CGFloat				gridWidth;
+@property (nonatomic) float					gridWidth;
 @property (nonatomic, readonly) CGFloat		contentHeight;
 @property (nonatomic) CGSize				padding;
 @property (nonatomic) int					perLine;
-@property (nonatomic) CGFloat				rowHeight;
-@property (nonatomic) CGFloat				sectionTitleHeight;
+@property (nonatomic) float					preLoadMultiplier;
+@property (nonatomic) float					rowHeight;
+@property (nonatomic) float					sectionTitleHeight;
 @property (nonatomic) BOOL					dynamicallyResizeTilesToFillSpace;
 
 - (void)setSections:(int)sections;
