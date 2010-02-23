@@ -10,7 +10,7 @@ I want this to be the last grid view I make. Right now, it's basically a UITable
 
 CHGridView is modeled after UITableView. You initialize CHGridView, set a delegate and data source, then give it tiles. It's designed to be as easy to use as UITableView.
 
-**CHGridView is not production-level software yet. Don't use it in shipping software.**
+NOTICE: **CHGridView is not production-level software yet. Don't use it in shipping software.**
 
 ###Description of classes:
 
@@ -58,7 +58,7 @@ If you disable scrolling with `setScrollingEnabled`, you can probably use this a
 
 ###Performance:
 
-I've tested CHGridView informally with a test application on both my iPhones. For my data source, I used 31 images to populate 1,984 tiles separated with 64 sections. They were exported from iPhoto as PNGs with a maximum width of 160 pixels. The images were drawn centered in CHImageTileView. Scrolling performance is not as good as Apple's Photos grid view, especially on my original iPhone.
+I've tested CHGridView informally with a test application on both my iPhones. For my data source, I used 31 images to populate 1,984 tiles separated with 64 sections. They were exported from iPhoto as PNGs with a maximum width of 160 pixels, then  were drawn centered and cropped in CHImageTileView. Scrolling performance is not as good as Apple's Photos grid view, especially on my original iPhone.
 
 - Original iPhone: about 12 - 30 fps.
 - iPhone 3G3: about 30 - 50 fps.
