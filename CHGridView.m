@@ -161,7 +161,7 @@
 		centeredRect.origin.y += rect.origin.y;
 		centeredRect.origin.x += rect.origin.x;
 		[tile setFrame:centeredRect];
-		[tile setAutoresizingMask:(UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin )];
+		[tile setAutoresizingMask:(UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin)];
 	}else{
 		[tile setFrame:rect];
 		[tile setAutoresizingMask:(UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth)];
@@ -178,7 +178,7 @@
 }
 
 - (void)reuseHiddenTiles{
-	NSMutableArray *toReuse = [[NSMutableArray alloc] init];
+	NSMutableArray *toReuse = [NSMutableArray array];
 	
 	CGRect b = self.bounds;
 	CGFloat contentOffsetY = self.contentOffset.y;
@@ -193,8 +193,6 @@
 	for(CHTileView *tile in toReuse){
 		[self reuseTile:tile];
 	}
-	
-	[toReuse release];
 }
 
 - (void)reuseTile:(CHTileView *)tile{
@@ -205,7 +203,7 @@
 }
 
 - (void)removeSectionTitleNotInRange:(CHSectionRange)range{
-	NSMutableArray *toDelete = [[NSMutableArray alloc] init];
+	NSMutableArray *toDelete = [NSMutableArray array];
 	
 	for (CHSectionTitleView *title in visibleSectionTitles) {
 		if(title.section < range.start || title.section > range.end){
@@ -217,8 +215,6 @@
 		[title removeFromSuperview];
 		[visibleSectionTitles removeObject:title];
 	}
-	
-	[toDelete release];
 }
 
 - (void)reloadData{
@@ -230,9 +226,13 @@
 	
 	CGRect b = [self bounds];
 	
-	if([dataSource respondsToSelector:@selector(numberOfSectionsInGridView:)])sections = [dataSource numberOfSectionsInGridView:self];
-	else sections = 1;
-
+	if([dataSource respondsToSelector:@selector(numberOfSectionsInGridView:)]){
+		sections = [dataSource numberOfSectionsInGridView:self];
+		if(sections == 0) sections = 1;
+	}else {
+		sections = 1;
+	}
+	
 	[layout setGridWidth:b.size.width];
 	[layout setPadding:padding];
 	[layout setPerLine:perLine];
@@ -247,7 +247,6 @@
 	}
 
 	[layout updateLayout];
-	
 	[self setNeedsLayout];
 }
 
@@ -273,7 +272,7 @@
 	CHGridIndexRange tileRange = [layout rangeOfVisibleIndexesForContentOffset:contentOffsetY andHeight:b.size.height];
 	[self loadVisibleTilesForIndexPathRange:tileRange];
 	
-	//if([gridDelegate respondsToSelector:@selector(visibleTilesChangedTo:)]) [gridDelegate visibleTilesChangedTo:visibleTiles.count];
+	if([gridDelegate respondsToSelector:@selector(visibleTilesChangedTo:)]) [gridDelegate visibleTilesChangedTo:visibleTiles.count];
 	
 	if(sections <= 1) return;
 	

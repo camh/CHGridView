@@ -74,11 +74,11 @@
 	
 	float perLineFloat = perLine;
 	
-	int u;
-	for(u = 0; u < _index.count; u++){
-		int numberOfTilesInSection = [[_index objectAtIndex:u] count];
+	for(NSMutableArray *array in _index){
+		int numberOfTilesInSection = [array count];
 		contentHeight += ceil(numberOfTilesInSection / perLineFloat) * rowHeight;
 	}
+	
 	if(sections > 1) contentHeight += (sectionTitleHeight * sections) + ((sections - 1) * padding.height);
 	contentHeight += padding.height;
 	
@@ -145,19 +145,16 @@
 	float pixelMargin = rowHeight * 2;
 	int currentSection = [self sectionIndexForContentOffset:offset];
 	
-	int i;
-	for(i = currentSection; i < _sectionTitles.count; i++){
-		if(firstRun){
-			start = i;
+	for(CHGridLayoutSection *section in _sectionTitles){
+		if(firstRun && section.section >= currentSection){
+			start = section.section;
 			firstRun = NO;
 		}
-		
-		CHGridLayoutSection *section = [_sectionTitles objectAtIndex:i];
 		
 		if(section.yCoordinate > (offset - pixelMargin) && section.yCoordinate <  (offset + height + pixelMargin)){
 			end = section.section;
 		}
-
+		
 		if(start > end) end = start;
 	}
 	

@@ -11,7 +11,7 @@
 #import "CHTileView.h"
 
 @implementation CHTileView
-@synthesize indexPath, selected, highlighted, reuseIdentifier, shadowOffset, shadowColor, shadowBlur;
+@synthesize indexPath, selected, highlighted, contentBackgroundColor, reuseIdentifier, shadowOffset, shadowColor, shadowBlur;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseId{
 	if(self = [super initWithFrame:frame]){
