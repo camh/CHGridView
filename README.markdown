@@ -2,7 +2,7 @@
 
 ![A screenshot of CHGridView](http://cameron.io/files/CHGridView-sizedToGrid.png) ![A second screenshot of CHGridView](http://cameron.io/files/CHGridView-centered.png)
 
-(Above is two screenshots of CHGridView, one with Photos-style layout, and another with iPhoto-style layout. CHImageTileView is used for quick image display.)
+(Above is two screenshots of CHGridView with CHImageTileView, one with Photos-style layout, and another with iPhoto-style layout.)
 
 ###About:
 
@@ -63,4 +63,4 @@ I've tested CHGridView informally with a test application on both my iPhones. Fo
 - Original iPhone: about 12 - 30 fps.
 - iPhone 3G3: about 30 - 50 fps.
 
-Admittedly, performance could be better. If you see something that could be better, send an email to [me@cameron.io](mailto:me@cameron.io).
+Admittedly, performance could be better. If you see something that could be improved, send an email to [me@cameron.io](mailto:me@cameron.io).
