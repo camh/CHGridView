@@ -61,6 +61,6 @@ If you disable scrolling with `setScrollingEnabled`, you can probably use this a
 I've tested CHGridView informally with a test application on both my iPhones. For my data source, I used 31 images to populate 1,984 tiles separated with 64 sections. They were exported from iPhoto as PNGs with a maximum width of 160 pixels. The images were drawn centered in CHImageTileView. Scrolling performance is not as good as Apple's Photos grid view, especially on my original iPhone.
 
 - Original iPhone: about 12 - 30 fps.
-- iPhone 3G3: average 30 - 50 fps.
+- iPhone 3G3: about 30 - 50 fps.
 
 Admittedly, performance could be better. I'm not an incredibly experienced programmer, so I'm not privy to a lot of formal programming knowledge. If you see something that could be better, send an email to [me@cameron.io](mailto:me@cameron.io).
