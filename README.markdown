@@ -2,7 +2,7 @@
 
 ![A screenshot of CHGridView](http://cameron.io/files/CHGridView-sizedToGrid.png) ![A second screenshot of CHGridView](http://cameron.io/files/CHGridView-centered.png)
 
-(Above is two screenshots of CHGridView, one with iPhone Photos-style layout, and another with iPhoto-style layout. CHImageTileView is used for quick image display.)
+(Above is two screenshots of CHGridView, one with Photos-style layout, and another with iPhoto-style layout. CHImageTileView is used for quick image display.)
 
 ###About:
 
@@ -15,32 +15,32 @@ NOTICE: **CHGridView is not production-level software yet. Don't use it in shipp
 ###Description of classes:
 
 - CHGridView: UIScrollView subclass that handles loading and display of tiles and section titles.
-- CHTileView: UIView subclass to draw content, indented to be subclassed for specific use.
-- CHImageTileView: CHTileView subclass to easily display images with subtle border, similar to Apple's Photos application.
+- CHTileView: UIView subclass to draw content, intended to be subclassed for specific use.
+- CHImageTileView: CHTileView subclass to easily display images with a border, similar to Apple's Photos application.
 - CHSectionTitleView: UIView subclass to display section names, can be subclassed and used for custom section titles.
-- CHGridLayout: Computes layout and caches it in a big array, makes it easy for CHGridView to only display visible tiles and section titles.
-- CHGridLayoutTile: A simple object that stores indexPath and rect for a tile.
+- CHGridLayout: Computes layout and caches it in a big array, making it easy for CHGridView to only display visible tiles and section titles.
+- CHGridLayoutTile: Simple object that stores `indexPath` and `rect` for a tile.
 - CHGridLayoutSection: Simple object to store section index and its Y co-ordinate position.
 
 ###Usage:
 
-[Download a sample view controller class](http://cameron.io/files/CHGridViewController.zip)
+[Download a sample view controller class](http://cameron.io/files/CHGridViewController.zip).
 
 Exactly like UITableView. Just implement the two required data source methods: `numberOfTilesInSection` and `tileForIndexPath`. CHGridView assumes there is at least one section. The method `tileForIndexPath` works very much like UITableView; CHGridView reuses tiles just like UITableView reuses cells. Call `dequeueReusableTileWithIdentifier` to get a reusable tile, if it's `nil`, `init` and `autorelease` a new tile and return it.
 
-There's two basic styles to use in GHGridView, one that resembles the iPhone Photos application, and one that mimics iPhoto and the iPad photo grid. The property that controls it is called `dynamicallyResizeTilesToFillSpace`. Set it to `YES` for the iPhone Photos app style.
+There's two basic styles to use in GHGridView, one that resembles the Photos application, and one that mimics iPhoto and the iPad photo grid. The property that controls it is called `dynamicallyResizeTilesToFillSpace`. Set it to `YES` for the  Photos app style.
 
 Row height, tiles per line, padding, section title height and shadow are all properties of CHGridView. These are not meant to change often like the data source and delegate methods. However, if you do change them, make sure to call `reloadData` to recalculate the layout.
 
-Shadows are drawn in Core Graphics and add to your padding. Adjust both until a desirable result is achieved. You can set shadows for a CHTileView directly, but don't; set shadow properties in CHGridView and they will be applied to all tiles.
+Shadows are drawn in Core Graphics and add to your padding. Adjust shadow properties and padding until a desirable result is achieved. You can set shadows for a CHTileView directly, but don't; set shadow properties in CHGridView and they will be applied to all tiles.
 
-Orientation changes and resizing are supported. Section titles and tiles are set to the correct autoresizing mask, but you should call `reloadData` after you resize CHGridView for optimal re-layout. You'll need to set CHGridView properties and `reloadData` as needed in your view controller's re-orientation methods.
+Orientation changes and resizing are supported. Section titles and tiles are set to the correct autoresizing mask, but you should call `reloadData` after you resize CHGridView for optimal re-layout, same goes for re-orientation.
 
 If you disable scrolling with `setScrollingEnabled`, you can probably use this as a un-scrollable grid view, but I haven't tested it.
 
 ###Behind the scenes:
 
-- CHGridView only loads visible tiles and section titles, plus two rows above and beneath. On the iPhone there's only about 30 tiles loaded at a time.
+- CHGridView only loads visible tiles and section titles, plus two rows above and beneath (on the Original iPhone, iPhone 3G or first-generation iPod Touch, it only loads half a row). There's only about 30 tiles loaded at any single time.
 - CHTileView shadows are not transparent, they are rendered onto the same background color as CHGridView. It's possible to change it if you long for the scrolling performance of Android or WebOS.
 - CHImageTileView supports scaling images up/down to fit its frame (and preserves aspect ratio) but it's not fast enough to use. The property is called `scalesImageToHeight` and you should never use it.
 - Section titles are only transparent when they need to be, otherwise they are opaque. If you subclass CHSectionTitleView, you'll need to check [self isOpaque] to deal with transparency on your own.
