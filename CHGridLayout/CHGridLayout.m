@@ -37,6 +37,11 @@
 
 #pragma mark setters
 
+- (void)setRowHeight:(CGFloat)f{
+	rowHeight = f;
+	pixelMargin = f * 2;
+}
+
 - (void)setSections:(int)sections{
 	[self clearData];
 	
@@ -123,13 +128,12 @@
 - (int)sectionIndexForContentOffset:(CGFloat)offset{
 	int sectionIndex = 0;
 	
-	int i;
-	for(i = 0; i < _sectionTitles.count; i++){
-		CHGridLayoutSection *section = [_sectionTitles objectAtIndex:i];
+	for(CHGridLayoutSection *section in _sectionTitles){
 		if(section.yCoordinate <= offset && offset > 0){
-			sectionIndex = i;
+			sectionIndex = section.section;
 		}
 	}
+	
 	return sectionIndex;
 }
 
@@ -142,7 +146,6 @@
 	int end = 0;
 	
 	BOOL firstRun = YES;
-	float pixelMargin = rowHeight * 2;
 	int currentSection = [self sectionIndexForContentOffset:offset];
 	
 	for(CHGridLayoutSection *section in _sectionTitles){
@@ -168,9 +171,7 @@
 }
 
 - (CHGridIndexRange)rangeOfVisibleIndexesForContentOffset:(CGFloat)offset andHeight:(CGFloat)height{
-	float pixelMargin = rowHeight * 2;
 	BOOL first = NO;
-	
 	CHGridIndexRange indexRange = {CHGridIndexPathMake(0, 0),CHGridIndexPathMake(0, 0)};
 	
 	for(NSMutableArray *sectionArray in _index){
@@ -184,8 +185,6 @@
 			}
 		}
 	}
-	
-	first = NO;
 	
 	return indexRange;
 }

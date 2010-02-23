@@ -33,12 +33,13 @@ static CHSectionRange CHSectionRangeMake(int start, int end){
 	NSMutableArray		*_index;
 	NSMutableArray		*_sectionTitles;
 	
-	CGFloat				gridWidth;
-	CGFloat				contentHeight;
+	float				gridWidth;
+	float				contentHeight;
 	CGSize				padding;
 	int					perLine;
-	CGFloat				rowHeight;
-	CGFloat				sectionTitleHeight;
+	float				rowHeight;
+	float				pixelMargin;
+	float				sectionTitleHeight;
 	BOOL				dynamicallyResizeTilesToFillSpace; 
 }
 

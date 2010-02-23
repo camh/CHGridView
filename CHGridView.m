@@ -16,7 +16,6 @@
 - (void)loadVisibleTilesForIndexPathRange:(CHGridIndexRange)range;
 - (void)loadVisibleTileForIndexPath:(CHGridIndexPath)indexPath;
 - (void)reuseHiddenTiles;
-- (void)reuseTile:(CHTileView *)tile;
 - (void)removeSectionTitleNotInRange:(CHSectionRange)range;
 - (void)removeAllSubviews;
 - (NSMutableArray *)tilesForSection:(int)section;
@@ -178,32 +177,28 @@
 }
 
 - (void)reuseHiddenTiles{
-	NSMutableArray *toReuse = [NSMutableArray array];
+	NSMutableArray *toReuse = [[NSMutableArray alloc] init];
 	
 	CGRect b = self.bounds;
 	CGFloat contentOffsetY = self.contentOffset.y;
 	float pixelMargin = rowHeight * 2;
+	int maxReusable = [self maxNumberOfReusableTiles];
 	
 	for(CHTileView *tile in visibleTiles){
 		if(tile.frame.origin.y + tile.frame.size.height < (contentOffsetY - pixelMargin) || tile.frame.origin.y > (contentOffsetY + b.size.height + pixelMargin)){
 			[toReuse addObject:tile];
+			if(reusableTiles.count < maxReusable) [reusableTiles addObject:tile];
 		}
 	}
 	
-	for(CHTileView *tile in toReuse){
-		[self reuseTile:tile];
-	}
-}
-
-- (void)reuseTile:(CHTileView *)tile{
-	if(reusableTiles.count < [self maxNumberOfReusableTiles]) [reusableTiles addObject:tile];
+	[toReuse makeObjectsPerformSelector:@selector(removeFromSuperview)];
+	[visibleTiles removeObjectsInArray:toReuse];
 	
-	[tile removeFromSuperview];
-	[visibleTiles removeObject:tile];
+	[toReuse release];
 }
 
 - (void)removeSectionTitleNotInRange:(CHSectionRange)range{
-	NSMutableArray *toDelete = [NSMutableArray array];
+	NSMutableArray *toDelete = [[NSMutableArray alloc] init];
 	
 	for (CHSectionTitleView *title in visibleSectionTitles) {
 		if(title.section < range.start || title.section > range.end){
@@ -211,10 +206,9 @@
 		}
 	}
 	
-	for(CHSectionTitleView *title in toDelete){
-		[title removeFromSuperview];
-		[visibleSectionTitles removeObject:title];
-	}
+	[toDelete makeObjectsPerformSelector:@selector(removeFromSuperview)];
+	[visibleSectionTitles removeObjectsInArray:toDelete];
+	[toDelete release];
 }
 
 - (void)reloadData{
@@ -439,8 +433,6 @@
 				if((offset + sectionTwo.frame.size.height) >= sectionTwo.yCoordinate){
 					f.origin.y = sectionTwo.yCoordinate - sectionTwo.frame.size.height;
 				}
-				
-				//[self bringSubviewToFront:sectionTwo];
 			}
 		}else{
 			f.origin.y = title.yCoordinate;
