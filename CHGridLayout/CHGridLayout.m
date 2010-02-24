@@ -180,6 +180,28 @@
 	return CHSectionRangeMake(start, end);
 }
 
+- (CHGridIndexPath)closestIndexPathToContentOffsetY:(CGFloat)offset{
+	CHGridLayoutTile *closestTile = nil;
+	
+	for(NSMutableArray *section in _index){
+		for(CHGridLayoutTile *tile in section){
+			if(tile.rect.origin.y > offset){
+				if(closestTile == nil){
+					closestTile = tile;
+				}else if(tile.rect.origin.y < closestTile.rect.origin.y && closestTile.rect.origin.y < offset){
+					closestTile = tile;
+				}
+			}
+		}
+	}
+	
+	if(closestTile != nil){
+		NSLog(@"closest indexPath.section = %i tileIndex = %i", closestTile.indexPath.section, closestTile.indexPath.tileIndex);
+		return [closestTile indexPath];
+	}
+	return CHGridIndexPathMake(0, 0);
+}
+
 - (CGRect)tileFrameForIndexPath:(CHGridIndexPath)indexPath{
 	NSMutableArray *sectionTiles = [_index objectAtIndex:indexPath.section];
 	return [[sectionTiles objectAtIndex:indexPath.tileIndex] rect];

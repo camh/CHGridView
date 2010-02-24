@@ -25,7 +25,7 @@
 @end
 
 @implementation CHGridView
-@synthesize dynamicallyResizeTilesToFillSpace, allowsSelection, padding, rowHeight, perLine, sectionTitleHeight, shadowOffset, shadowColor, shadowBlur;
+@synthesize dynamicallyResizeTilesToFillSpace, allowsSelection, padding, preLoadMultiplier, rowHeight, perLine, sectionTitleHeight, shadowOffset, shadowColor, shadowBlur;
 
 - (id)init{
 	return [self initWithFrame:CGRectZero];
@@ -274,7 +274,7 @@
 	CHGridIndexRange tileRange = [layout rangeOfVisibleIndexesForContentOffset:contentOffsetY andHeight:b.size.height];
 	[self loadVisibleTilesForIndexPathRange:tileRange];
 	
-	//if([gridDelegate respondsToSelector:@selector(visibleTilesChangedTo:)]) [gridDelegate visibleTilesChangedTo:visibleTiles.count];
+	if([gridDelegate respondsToSelector:@selector(visibleTilesChangedTo:)]) [gridDelegate visibleTilesChangedTo:visibleTiles.count];
 	
 	if(sections > 1){
 		CHSectionRange sectionRange = [layout sectionRangeForContentOffset:contentOffsetY andHeight:b.size.height];
@@ -343,6 +343,13 @@
 
 - (CHGridIndexPath)indexPathForPoint:(CGPoint)point{
 	return CHGridIndexPathMake(0, 0);
+}
+
+#pragma mark tile scrolling methods
+
+- (void)scrollToTileAtIndexPath:(CHGridIndexPath)indexPath animated:(BOOL)animated{
+	CGRect r = [layout tileFrameForIndexPath:indexPath];
+	[self scrollRectToVisible:r animated:animated];
 }
 
 #pragma mark selection methods

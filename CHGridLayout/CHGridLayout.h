@@ -60,6 +60,8 @@ static CHSectionRange CHSectionRangeMake(int start, int end){
 
 - (CGFloat)yCoordinateForTitleOfSection:(int)section;
 - (CHSectionRange)sectionRangeForContentOffset:(CGFloat)offset andHeight:(CGFloat)height;
+
+- (CHGridIndexPath)closestIndexPathToContentOffsetY:(CGFloat)offset;
 - (CGRect)tileFrameForIndexPath:(CHGridIndexPath)indexPath;
 - (CHGridIndexRange)rangeOfVisibleIndexesForContentOffset:(CGFloat)offset andHeight:(CGFloat)height;
 

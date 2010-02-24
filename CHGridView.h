@@ -86,6 +86,8 @@
 - (CHTileView *)tileForIndexPath:(CHGridIndexPath)indexPath;
 - (CHGridIndexPath)indexPathForPoint:(CGPoint)point;
 
+- (void)scrollToTileAtIndexPath:(CHGridIndexPath)indexPath animated:(BOOL)animated;
+
 - (void)deselectTileAtIndexPath:(CHGridIndexPath)indexPath;
 - (void)deselecSelectedTile;
 
