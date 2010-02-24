@@ -19,7 +19,7 @@
 		if(image == nil)
 			image = [[UIImage alloc] init];
 		
-		scalesImageToHeight = NO;
+		scalesImageToFit = NO;
 	}
 	return self;
 }
