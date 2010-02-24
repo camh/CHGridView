@@ -40,7 +40,7 @@ If you disable scrolling with `setScrollingEnabled`, you can probably use this a
 
 - CHGridView only loads visible tiles and section titles, plus two rows above and beneath (on the Original iPhone, iPhone 3G or first-generation iPod Touch, it only loads half a row). There's only about 30 tiles loaded at any single time.
 - CHTileView shadows are not transparent, they are rendered onto the same background color as CHGridView. It's possible to change it if you long for the scrolling performance of Android or WebOS.
-- CHImageTileView supports scaling images up/down to fit its frame (and preserves aspect ratio) but it's not fast enough to use. The property is called `scalesImageToHeight` and you should never use it.
+- CHImageTileView supports scaling images up/down to fit its frame (and preserves aspect ratio) but it's not fast enough to use. The property is called `scalesImageToFit` and you should never use it.
 - Section titles are only transparent when they need to be, otherwise they are opaque. If you subclass CHSectionTitleView, you'll need to check [self isOpaque] to deal with transparency on your own.
 
 ###Roadmap (roughly in order):
