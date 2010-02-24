@@ -12,7 +12,7 @@
 #import "CHImageTileView.h"
 
 @implementation CHImageTileView
-@synthesize image, scalesImageToHeight;
+@synthesize image, scalesImageToFit;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseId{
 	if(self = [super initWithFrame:frame reuseIdentifier:reuseId]){
@@ -40,7 +40,7 @@
 	float leftOffset = 0.0;
 	float topOffset = 0.0;
 	
-	if(scalesImageToHeight){
+	if(scalesImageToFit){
 		float heightDividedByWidth = imageSize.height / imageSize.width;
 		float widthDividedByHeight = imageSize.width / imageSize.height;
 		

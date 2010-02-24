@@ -13,10 +13,10 @@
 
 @interface CHImageTileView : CHTileView {
 	UIImage			*image;
-	BOOL			scalesImageToHeight;
+	BOOL			scalesImageToFit;
 }
 
 @property (nonatomic, retain) UIImage		*image;
-@property (nonatomic) BOOL					scalesImageToHeight; // don't use this EVER
+@property (nonatomic) BOOL					scalesImageToFit; // don't use this EVER
 
 @end
