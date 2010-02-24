@@ -25,7 +25,7 @@
 @end
 
 @implementation CHGridView
-@synthesize dynamicallyResizeTilesToFillSpace, allowsSelection, padding, preLoadMultiplier, rowHeight, perLine, sectionTitleHeight, shadowOffset, shadowColor, shadowBlur;
+@synthesize dataSource, dynamicallyResizeTilesToFillSpace, allowsSelection, padding, preLoadMultiplier, rowHeight, perLine, sectionTitleHeight, shadowOffset, shadowColor, shadowBlur;
 
 - (id)init{
 	return [self initWithFrame:CGRectZero];
@@ -101,8 +101,8 @@
 			
 			CHSectionTitleView *sectionTitle = nil;
 			
-			if([gridDelegate respondsToSelector:@selector(titleViewForHeaderOfSection:inGridView:)]){
-				sectionTitle = [gridDelegate titleViewForHeaderOfSection:i inGridView:self];
+			if([[self delegate] respondsToSelector:@selector(titleViewForHeaderOfSection:inGridView:)]){
+				sectionTitle = [[self delegate] titleViewForHeaderOfSection:i inGridView:self];
 				[sectionTitle setFrame:CGRectMake(0, yCoordinate, b.size.width, sectionTitleHeight)];
 			}else{
 				sectionTitle = [[CHSectionTitleView alloc] initWithFrame:CGRectMake(0, yCoordinate, b.size.width, sectionTitleHeight)];
@@ -158,8 +158,8 @@
 	
 	CGRect rect = [layout tileFrameForIndexPath:indexPath];
 	
-	if([gridDelegate respondsToSelector:@selector(sizeForTileAtIndex:inGridView:)] && !dynamicallyResizeTilesToFillSpace){
-		CGSize size = [gridDelegate sizeForTileAtIndex:indexPath inGridView:self];
+	if([[self delegate] respondsToSelector:@selector(sizeForTileAtIndex:inGridView:)] && !dynamicallyResizeTilesToFillSpace){
+		CGSize size = [[self delegate] sizeForTileAtIndex:indexPath inGridView:self];
 		CGRect centeredRect = [layout centerRect:CGRectMake(0, 0, size.width, size.height) inLargerRect:rect roundUp:NO];
 		centeredRect.origin.y += rect.origin.y;
 		centeredRect.origin.x += rect.origin.x;
@@ -230,7 +230,6 @@
 		sections = 1;
 	}
 	
-	
 	[sectionCounts removeAllObjects];
 	
 	[layout setGridWidth:b.size.width];
@@ -275,7 +274,7 @@
 	CHGridIndexRange tileRange = [layout rangeOfVisibleIndexesForContentOffset:contentOffsetY andHeight:b.size.height];
 	[self loadVisibleTilesForIndexPathRange:tileRange];
 	
-	if([gridDelegate respondsToSelector:@selector(visibleTilesChangedTo:)]) [gridDelegate visibleTilesChangedTo:visibleTiles.count];
+	if([[self delegate] respondsToSelector:@selector(visibleTilesChangedTo:)]) [[self delegate] visibleTilesChangedTo:visibleTiles.count];
 	
 	if(sections > 1){
 		CHSectionRange sectionRange = [layout sectionRangeForContentOffset:contentOffsetY andHeight:b.size.height];
@@ -371,14 +370,18 @@
 	}
 }
 
-#pragma mark property setters
+#pragma mark property setters and getters
+
+- (id<CHGridViewDelegate>)delegate {
+	return (id<CHGridViewDelegate>)[super delegate];
+}
+
+- (void)setDelegate:(id<UIScrollViewDelegate,CHGridViewDelegate>)d{
+	[super setDelegate:d];
+}
 
 - (void)setDataSource:(id<CHGridViewDataSource>)d{
 	dataSource = d;
-}
-
-- (void)setGridDelegate:(id<CHGridViewDelegate>)d{
-	gridDelegate = d;
 }
 
 - (void)setDynamicallyResizeTilesToFillSpace:(BOOL)dynamically{
@@ -427,8 +430,8 @@
 	UIView *view = [self hitTest:location withEvent:event];
 	
 	if(selectedTile != nil && [selectedTile isEqual:view] && allowsSelection){
-		if([gridDelegate respondsToSelector:@selector(selectedTileAtIndexPath:inGridView:)])
-			[gridDelegate selectedTileAtIndexPath:[selectedTile indexPath] inGridView:self];
+		if([[self delegate] respondsToSelector:@selector(selectedTileAtIndexPath:inGridView:)])
+			[[self delegate] selectedTileAtIndexPath:[selectedTile indexPath] inGridView:self];
 	}
 }
 

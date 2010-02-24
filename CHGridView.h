@@ -28,7 +28,7 @@
 
 // delegate protocol
 
-@protocol CHGridViewDelegate <NSObject>
+@protocol CHGridViewDelegate <NSObject,UIScrollViewDelegate>
 @optional
 	- (void)selectedTileAtIndexPath:(CHGridIndexPath)indexPath inGridView:(CHGridView *)gridView;
 	- (void)visibleTilesChangedTo:(int)tiles;
@@ -44,7 +44,6 @@
 	NSMutableArray					*reusableTiles;
 	
 	id<CHGridViewDataSource>		dataSource;
-	id<CHGridViewDelegate>			gridDelegate;
 	
 	int								sections;
 	NSMutableArray					*sectionCounts;
@@ -65,6 +64,9 @@
 	CGFloat							shadowBlur;
 }
 
+@property (nonatomic, assign) id<CHGridViewDataSource> dataSource;
+@property (nonatomic, assign) id<CHGridViewDelegate,UIScrollViewDelegate> delegate;
+
 @property (nonatomic) BOOL						dynamicallyResizeTilesToFillSpace;
 @property (nonatomic) BOOL						allowsSelection;
 @property (nonatomic) CGSize					padding;
@@ -76,9 +78,6 @@
 @property (nonatomic) CGSize					shadowOffset;
 @property (nonatomic, retain) UIColor			*shadowColor;
 @property (nonatomic) CGFloat					shadowBlur;
-
-- (void)setDataSource:(id<CHGridViewDataSource>)d;
-- (void)setGridDelegate:(id<CHGridViewDelegate>)d;
 
 - (void)reloadData;
 

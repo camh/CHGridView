@@ -47,6 +47,7 @@ If you disable scrolling with `setScrollingEnabled`, you can probably use this a
 
 - Match or exceed speed and performance found in iPhone's Photos app grid view
 - More UITableView cloning, like scrolling to a tile at a specific indexPath
+- Footer labels (with dynamic height) and footer views
 - Tile labels
 - Flexible per-line setting (maybe a range?)
 - Horizontal scrolling and paging support
