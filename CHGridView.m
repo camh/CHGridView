@@ -230,6 +230,7 @@
 		sections = 1;
 	}
 	
+	
 	[sectionCounts removeAllObjects];
 	
 	[layout setGridWidth:b.size.width];
