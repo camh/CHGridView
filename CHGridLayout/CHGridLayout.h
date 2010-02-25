@@ -30,8 +30,9 @@ static CHSectionRange CHSectionRangeMake(int start, int end){
 //-----------
 
 @interface CHGridLayout : NSObject {
-	NSMutableArray		*_index;
-	NSMutableArray		*_sectionTitles;
+	NSMutableArray		*index;
+	NSMutableArray		*sectionTitles;
+	NSMutableArray		*justTiles;
 	
 	float				gridWidth;
 	float				contentHeight;
@@ -44,14 +45,17 @@ static CHSectionRange CHSectionRangeMake(int start, int end){
 	BOOL				dynamicallyResizeTilesToFillSpace; 
 }
 
-@property (nonatomic) float					gridWidth;
-@property (nonatomic, readonly) CGFloat		contentHeight;
-@property (nonatomic) CGSize				padding;
-@property (nonatomic) int					perLine;
-@property (nonatomic) float					preLoadMultiplier;
-@property (nonatomic) float					rowHeight;
-@property (nonatomic) float					sectionTitleHeight;
-@property (nonatomic) BOOL					dynamicallyResizeTilesToFillSpace;
+@property (nonatomic, readonly) NSMutableArray		*index;
+@property (nonatomic, readonly) NSMutableArray		*justTiles;
+
+@property (nonatomic) float							gridWidth;
+@property (nonatomic, readonly) CGFloat				contentHeight;
+@property (nonatomic) CGSize						padding;
+@property (nonatomic) int							perLine;
+@property (nonatomic) float							preLoadMultiplier;
+@property (nonatomic) float							rowHeight;
+@property (nonatomic) float							sectionTitleHeight;
+@property (nonatomic) BOOL							dynamicallyResizeTilesToFillSpace;
 
 - (void)setSections:(int)sections;
 - (void)setNumberOfTiles:(int)tiles ForSectionIndex:(int)section;

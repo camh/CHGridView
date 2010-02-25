@@ -47,8 +47,10 @@
 	
 	int								sections;
 	NSMutableArray					*sectionCounts;
+	int								maxReusable;
 	
 	CHTileView						*selectedTile;
+	BOOL							isSlowDevice;
 
 	//settable properties
 	BOOL							dynamicallyResizeTilesToFillSpace;

@@ -9,12 +9,11 @@
 //
 
 #import "CHGridView.h"
+#import "CHGridLayoutTile.h"
 
 @interface CHGridView()
-- (int)maxNumberOfReusableTiles;
 - (void)loadVisibleSectionTitlesForSectionRange:(CHSectionRange)range;
-- (void)loadVisibleTilesForIndexPathRange:(CHGridIndexRange)range;
-- (void)loadVisibleTileForIndexPath:(CHGridIndexPath)indexPath;
+- (void)loadVisibleTileForIndexPath:(CHGridIndexPath)indexPath withRect:(CGRect)r;
 - (void)reuseHiddenTiles;
 - (void)removeSectionTitleNotInRange:(CHSectionRange)range;
 - (void)removeAllSubviews;
@@ -52,23 +51,27 @@
 		
 		allowsSelection = YES;
 		dynamicallyResizeTilesToFillSpace = NO;
-		padding = CGSizeMake(10.0, 10.0);
-		rowHeight = 100.0;
+		padding = CGSizeMake(10.0f, 10.0f);
+		rowHeight = 100.0f;
 		perLine = 5;
-		sectionTitleHeight = 25.0;
+		sectionTitleHeight = 25.0f;
 		
-		preLoadMultiplier = 2.0;
+		preLoadMultiplier = 5.0f;
 		
-		shadowOffset = CGSizeMake(0, 0);
-		shadowColor = [[UIColor colorWithWhite:0.0 alpha:0.5] retain];
-		shadowBlur = 0.0;
+		shadowOffset = CGSizeMake(0.0f, 0.0f);
+		shadowColor = [[UIColor colorWithWhite:0.0f alpha:0.5f] retain];
+		shadowBlur = 0.0f;
 		
 		[self setBackgroundColor:[UIColor whiteColor]];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reuseHiddenTiles) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
 	}
 	return self;
 }
 
 - (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+	
 	[shadowColor release];
 	[sectionCounts release];
 	[layout release];
@@ -79,10 +82,6 @@
 }
 
 #pragma mark loading methods
-
-- (int)maxNumberOfReusableTiles{
-	return ceil((self.bounds.size.height / rowHeight) * perLine);
-}
 
 - (void)loadVisibleSectionTitlesForSectionRange:(CHSectionRange)range{
 	CGRect b = self.bounds;
@@ -103,9 +102,9 @@
 			
 			if([[self delegate] respondsToSelector:@selector(titleViewForHeaderOfSection:inGridView:)]){
 				sectionTitle = [[self delegate] titleViewForHeaderOfSection:i inGridView:self];
-				[sectionTitle setFrame:CGRectMake(0, yCoordinate, b.size.width, sectionTitleHeight)];
+				[sectionTitle setFrame:CGRectMake(b.origin.x, yCoordinate, b.size.width, sectionTitleHeight)];
 			}else{
-				sectionTitle = [[CHSectionTitleView alloc] initWithFrame:CGRectMake(0, yCoordinate, b.size.width, sectionTitleHeight)];
+				sectionTitle = [[CHSectionTitleView alloc] initWithFrame:CGRectMake(b.origin.x, yCoordinate, b.size.width, sectionTitleHeight)];
 				if([dataSource respondsToSelector:@selector(titleForHeaderOfSection:inGridView:)])
 					[sectionTitle setTitle:[dataSource titleForHeaderOfSection:i inGridView:self]];
 			}
@@ -114,7 +113,7 @@
 			[sectionTitle setSection:i];
 			[sectionTitle setAutoresizingMask:(UIViewAutoresizingFlexibleWidth)];
 			
-			if(self.dragging || self.tracking || self.decelerating)
+			if(self.dragging || self.decelerating)
 				[self insertSubview:sectionTitle atIndex:self.subviews.count - 1];
 			else
 				[self insertSubview:sectionTitle atIndex:self.subviews.count];
@@ -127,57 +126,37 @@
 	[self removeSectionTitleNotInRange:range];
 }
 
-- (void)loadVisibleTilesForIndexPathRange:(CHGridIndexRange)range{
-	int i, j, ground, ceiling;
-	for(i = range.start.section; i < range.end.section + 1; i++){
-		ground = 0;
-		ceiling = 0;
-		
-		if(i == range.start.section) ground = range.start.tileIndex;
-		else ground = 0;
-		if(i == range.end.section) ceiling = range.end.tileIndex + 1;
-		else ceiling = [[sectionCounts objectAtIndex:i] intValue];
-		
-		for(j = ground; j < ceiling; j++){
-			[self loadVisibleTileForIndexPath:CHGridIndexPathMake(i, j)];
-		}
-	}
-	
-	[self reuseHiddenTiles];
-}
-
-- (void)loadVisibleTileForIndexPath:(CHGridIndexPath)indexPath{
+- (void)loadVisibleTileForIndexPath:(CHGridIndexPath)indexPath withRect:(CGRect)r{
 	for(CHTileView *tile in visibleTiles){
-		if(tile.indexPath.section == indexPath.section && tile.indexPath.tileIndex == indexPath.tileIndex){
+		CHGridIndexPath tileIndex = tile.indexPath;
+		if(tileIndex.section == indexPath.section && tileIndex.tileIndex == indexPath.tileIndex){
 			return;
 		}
 	}
 	
 	CHTileView *tile = [dataSource tileForIndexPath:indexPath inGridView:self];
+	
 	[tile setIndexPath:indexPath];
-	
-	CGRect rect = [layout tileFrameForIndexPath:indexPath];
-	
-	if([[self delegate] respondsToSelector:@selector(sizeForTileAtIndex:inGridView:)] && !dynamicallyResizeTilesToFillSpace){
-		CGSize size = [[self delegate] sizeForTileAtIndex:indexPath inGridView:self];
-		CGRect centeredRect = [layout centerRect:CGRectMake(0, 0, size.width, size.height) inLargerRect:rect roundUp:NO];
-		centeredRect.origin.y += rect.origin.y;
-		centeredRect.origin.x += rect.origin.x;
-		[tile setFrame:centeredRect];
-		[tile setAutoresizingMask:(UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin)];
-	}else{
-		[tile setFrame:rect];
-		[tile setAutoresizingMask:(UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth)];
-	}
-	
 	[tile setBackgroundColor:self.backgroundColor];
+	[tile setSelected:NO];
 	
 	[tile setShadowOffset:shadowOffset];
 	[tile setShadowColor:shadowColor];
 	[tile setShadowBlur:shadowBlur];
+
+	if([[self delegate] respondsToSelector:@selector(sizeForTileAtIndex:inGridView:)] && !dynamicallyResizeTilesToFillSpace){
+		CGSize size = [[self delegate] sizeForTileAtIndex:indexPath inGridView:self];
+		CGRect centeredRect = [layout centerRect:CGRectMake(0.0f, 0.0f, size.width, size.height) inLargerRect:r roundUp:NO];
+		centeredRect.origin.y += r.origin.y;
+		centeredRect.origin.x += r.origin.x;
+		[tile setFrame:centeredRect];
+		[tile setAutoresizingMask:(UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin)];
+	}else{
+		[tile setFrame:r];
+		[tile setAutoresizingMask:(UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth)];
+	}
 	
-	[self addSubview:tile];
-	[self sendSubviewToBack:tile];
+	[self insertSubview:tile atIndex:0];
 	[visibleTiles addObject:tile];
 }
 
@@ -186,32 +165,34 @@
 	
 	CGRect b = self.bounds;
 	CGFloat contentOffsetY = self.contentOffset.y;
-	float pixelMargin = rowHeight * 2;
-	int maxReusable = [self maxNumberOfReusableTiles];
+	float pixelMargin = rowHeight * ([layout preLoadMultiplier]);
+	
+	CGFloat firstY = (b.size.height + contentOffsetY + pixelMargin);
+	CGFloat secondY = contentOffsetY - pixelMargin;
 	
 	for(CHTileView *tile in visibleTiles){
-		if(tile.frame.origin.y + tile.frame.size.height < (contentOffsetY - pixelMargin) || tile.frame.origin.y > (contentOffsetY + b.size.height + pixelMargin)){
+		CGRect r = tile.frame;
+		if(r.origin.y > firstY || r.origin.y + r.size.height < secondY){
 			[toReuse addObject:tile];
 			if(reusableTiles.count < maxReusable) [reusableTiles addObject:tile];
 		}
 	}
 	
-	[toReuse makeObjectsPerformSelector:@selector(removeFromSuperview)];
 	[visibleTiles removeObjectsInArray:toReuse];
 }
 
 - (void)removeSectionTitleNotInRange:(CHSectionRange)range{
-	NSMutableArray *toDelete = [[NSMutableArray alloc] init];
+	NSMutableArray *toDelete = [NSMutableArray array];
 	
 	for (CHSectionTitleView *title in visibleSectionTitles) {
-		if(title.section < range.start || title.section > range.end){
+		int s = title.section;
+		if(s < range.start || s > range.end){
 			[toDelete addObject:title];
 		}
 	}
 	
 	[toDelete makeObjectsPerformSelector:@selector(removeFromSuperview)];
 	[visibleSectionTitles removeObjectsInArray:toDelete];
-	[toDelete release];
 }
 
 - (void)reloadData{
@@ -235,8 +216,8 @@
 	[layout setGridWidth:b.size.width];
 	[layout setPadding:padding];
 	[layout setPerLine:perLine];
-	[layout setRowHeight:rowHeight];
 	[layout setPreLoadMultiplier:preLoadMultiplier];
+	[layout setRowHeight:rowHeight];
 	[layout setSectionTitleHeight:sectionTitleHeight];
 	[layout setDynamicallyResizeTilesToFillSpace:dynamicallyResizeTilesToFillSpace];
 	
@@ -250,14 +231,18 @@
 
 	[layout updateLayout];
 	[self setNeedsLayout];
+	
+	maxReusable = ceilf((self.bounds.size.height / rowHeight) * perLine) * 2;
+	[self setContentSize:CGSizeMake(b.size.width, [layout contentHeight])];
 }
 
 - (CHTileView *)dequeueReusableTileWithIdentifier:(NSString *)identifier{
 	for(CHTileView *tile in reusableTiles){
-		CHTileView *foundTile = nil;
-		if([[tile reuseIdentifier] isEqualToString:identifier]) foundTile = [tile retain];
-		[reusableTiles removeObject:tile];
-		return foundTile;
+		if([[tile reuseIdentifier] isEqualToString:identifier]){
+			[[tile retain] autorelease];
+			[reusableTiles removeObject:tile];
+			return tile;
+		}
 	}
 	return nil;
 }
@@ -268,13 +253,22 @@
 	if(dataSource == nil) return;
 	
 	CGRect b = [self bounds];
-	[self setContentSize:CGSizeMake(b.size.width, [layout contentHeight])];
-	float contentOffsetY = self.contentOffset.y;
 	
-	CHGridIndexRange tileRange = [layout rangeOfVisibleIndexesForContentOffset:contentOffsetY andHeight:b.size.height];
-	[self loadVisibleTilesForIndexPathRange:tileRange];
+	[self reuseHiddenTiles];
 	
-	if([[self delegate] respondsToSelector:@selector(visibleTilesChangedTo:)]) [[self delegate] visibleTilesChangedTo:visibleTiles.count];
+	CGFloat	contentOffsetY = self.contentOffset.y;
+	CGFloat pixelMargin = rowHeight * [layout preLoadMultiplier];
+	CGFloat firstY = (b.size.height + contentOffsetY + pixelMargin);
+	CGFloat secondY = contentOffsetY - pixelMargin;
+	
+	for(CHGridLayoutTile *tile in [layout justTiles]){
+		CGRect r = [tile rect];
+		if(r.origin.y < firstY && r.origin.y + r.size.height > secondY){
+			[self loadVisibleTileForIndexPath:tile.indexPath withRect:r];
+		}
+	}
+	
+	//if([[self delegate] respondsToSelector:@selector(visibleTilesChangedTo:)]) [[self delegate] visibleTilesChangedTo:visibleTiles.count];
 	
 	if(sections > 1){
 		CHSectionRange sectionRange = [layout sectionRangeForContentOffset:contentOffsetY andHeight:b.size.height];
@@ -442,19 +436,22 @@
 	
 	for(CHSectionTitleView *title in visibleSectionTitles){
 		CGRect f = [title frame];
+		float sectionY = title.yCoordinate;
 		
-		if(title.yCoordinate <= offset && offset > 0){
+		if(sectionY <= offset && offset > 0.0f){
 			f.origin.y = offset;
-			if(offset <= 0) f.origin.y = title.yCoordinate;
+			if(offset <= 0.0f) f.origin.y = sectionY;
 			
 			CHSectionTitleView *sectionTwo = [self sectionTitleViewForSection:title.section + 1];
 			if(sectionTwo != nil){
-				if((offset + sectionTwo.frame.size.height) >= sectionTwo.yCoordinate){
-					f.origin.y = sectionTwo.yCoordinate - sectionTwo.frame.size.height;
+				CGFloat sectionTwoHeight = sectionTwo.frame.size.height;
+				CGFloat	sectionTwoY = sectionTwo.yCoordinate;
+				if((offset + sectionTwoHeight) >= sectionTwoY){
+					f.origin.y = sectionTwoY - sectionTwoHeight;
 				}
 			}
 		}else{
-			f.origin.y = title.yCoordinate;
+			f.origin.y = sectionY;
 		}
 		
 		if(f.origin.y <= offset) [title setOpaque:NO];

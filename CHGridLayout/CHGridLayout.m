@@ -12,30 +12,36 @@
 #import "CHGridLayoutTile.h"
 #import "CHGridLayoutSection.h"
 #include <sys/types.h>  
-#include <sys/sysctl.h>  
+#include <sys/sysctl.h> 
+
+#define SLOW_DEVICE_PRELOAD 2.0f
 
 @implementation CHGridLayout
-@synthesize gridWidth, contentHeight, padding, perLine, preLoadMultiplier, rowHeight, sectionTitleHeight, dynamicallyResizeTilesToFillSpace;
+@synthesize index, justTiles, gridWidth, contentHeight, padding, perLine, preLoadMultiplier, rowHeight, sectionTitleHeight, dynamicallyResizeTilesToFillSpace;
 
 - (id)init{
 	if(self = [super init]){
-		if(_index == nil)
-			_index = [[NSMutableArray alloc] init];
+		if(index == nil)
+			index = [[NSMutableArray alloc] init];
 		
-		if(_sectionTitles == nil)
-			_sectionTitles = [[NSMutableArray alloc] init];
+		if(sectionTitles == nil)
+			sectionTitles = [[NSMutableArray alloc] init];
 		
-		preLoadMultiplier = 2.0;
+		if(justTiles == nil)
+			justTiles = [[NSMutableArray alloc] init];
 		
-		contentHeight = 0.0;
-		rowHeight = 0.0;
+		preLoadMultiplier = 5.0f;
+		
+		contentHeight = 0.0f;
+		rowHeight = 0.0f;
 	}
 	return self;
 }
 
 - (void)dealloc{
-	[_sectionTitles release];
-	[_index release];
+	[justTiles release];
+	[sectionTitles release];
+	[index release];
 	[super dealloc];
 }
 
@@ -43,8 +49,11 @@
 
 - (void)setRowHeight:(CGFloat)f{
 	rowHeight = f;
-	
 	pixelMargin = f * preLoadMultiplier;
+}
+
+- (void)setPreLoadMultiplier:(float)f{
+	preLoadMultiplier = f;
 	
 	size_t size;  
 	sysctlbyname("hw.machine", NULL, &size, NULL, 0);  
@@ -53,9 +62,9 @@
 	NSString *platform = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];  
 	free(machine);
 	
-	if([platform isEqualToString:@"iPhone1,1"]) pixelMargin = f * 0.5;
-	if([platform isEqualToString:@"iPhone1,2"]) pixelMargin = f * 0.5;
-	if([platform isEqualToString:@"iPod1,1"]) pixelMargin = f * 0.5;
+	if([platform isEqualToString:@"iPhone1,1"]) preLoadMultiplier = SLOW_DEVICE_PRELOAD;
+	if([platform isEqualToString:@"iPhone1,2"]) preLoadMultiplier = SLOW_DEVICE_PRELOAD;
+	if([platform isEqualToString:@"iPod1,1"]) preLoadMultiplier = SLOW_DEVICE_PRELOAD;
 }
 
 - (void)setSections:(int)sections{
@@ -65,19 +74,20 @@
 	for(i = 0; i < sections; i++){
 		NSMutableArray *section = [NSMutableArray array];
 		CHGridLayoutSection *section2 = [[CHGridLayoutSection alloc] initWithSection:i];
-		[_index addObject:section];
-		[_sectionTitles addObject:section2];
+		[index addObject:section];
+		[sectionTitles addObject:section2];
 		[section2 release];
 	}
 }
 
 - (void)setNumberOfTiles:(int)tiles ForSectionIndex:(int)section{
-	if(section < 0 || section >= _index.count) return;
+	if(section < 0 || section >= index.count) return;
 	
 	int i;
 	for(i = 0; i < tiles; i++){
 		CHGridLayoutTile *tile = [[CHGridLayoutTile alloc] initWithIndexPath:CHGridIndexPathMake(section, i)];
-		[[_index objectAtIndex:section] addObject:tile];
+		[[index objectAtIndex:section] addObject:tile];
+		[justTiles addObject:tile];
 		[tile release];
 	}
 }
@@ -85,40 +95,40 @@
 #pragma mark data & layout
 
 - (void)clearData{
-	[_index removeAllObjects];
-	[_sectionTitles removeAllObjects];
-	contentHeight = 0.0;
+	[index removeAllObjects];
+	[sectionTitles removeAllObjects];
+	contentHeight = 0.0f;
 }
 
 - (void)updateLayout{
-	int sections = _index.count;
+	int sections = index.count;
 	
 	float perLineFloat = perLine;
 	
-	for(NSMutableArray *array in _index){
+	for(NSMutableArray *array in index){
 		int numberOfTilesInSection = [array count];
-		contentHeight += ceil(numberOfTilesInSection / perLineFloat) * rowHeight;
+		contentHeight += ceilf(numberOfTilesInSection / perLineFloat) * rowHeight;
 	}
 	
 	if(sections > 1) contentHeight += (sectionTitleHeight * sections) + ((sections - 1) * padding.height);
 	contentHeight += padding.height;
 	
 	int i;
-	for(i = 0; i < _index.count; i++){
-		CHGridLayoutSection *section = [_sectionTitles objectAtIndex:i];
+	for(i = 0; i < index.count; i++){
+		CHGridLayoutSection *section = [sectionTitles objectAtIndex:i];
 		CHGridLayoutSection *previousSection = nil;
-		if(i > 0) previousSection = [_sectionTitles objectAtIndex:(i - 1)];
-		NSMutableArray *tilesForSection = [_index objectAtIndex:i];
+		if(i > 0) previousSection = [sectionTitles objectAtIndex:(i - 1)];
+		NSMutableArray *tilesForSection = [index objectAtIndex:i];
 		
 		if(sections > 1){
 			float previousY = 0.0;
 			if(previousSection != nil) previousY = previousSection.yCoordinate;
 			int numberOfTilesInPreviousSection = 0;
-			if(i > 0) numberOfTilesInPreviousSection = [[_index objectAtIndex:(i - 1)] count];
+			if(i > 0) numberOfTilesInPreviousSection = [[index objectAtIndex:(i - 1)] count];
 			float sectionYPadding = 0.0f;
 			if(i > 0) sectionYPadding = padding.height + sectionTitleHeight;
 			
-			[section setYCoordinate:ceil(numberOfTilesInPreviousSection / perLineFloat) * rowHeight + sectionYPadding + previousY];
+			[section setYCoordinate:ceilf(numberOfTilesInPreviousSection / perLineFloat) * rowHeight + sectionYPadding + previousY];
 		}else{
 			section = nil;
 		}
@@ -128,10 +138,10 @@
 			if(section != nil) y = section.yCoordinate + sectionTitleHeight;
 			
 			float rowXPadding = (padding.width * perLineFloat) + padding.width;
-			float row = floor(tile.indexPath.tileIndex / perLine);
+			float row = floorf(tile.indexPath.tileIndex / perLine);
 			int rowIndex = tile.indexPath.tileIndex - (row * perLine);
 			
-			float width = ceil((gridWidth - rowXPadding) / perLine);
+			float width = ceilf((gridWidth - rowXPadding) / perLine);
 			float height = rowHeight - padding.height;
 			
 			[tile setRect:CGRectMake(padding.width + (rowIndex * width) + (rowIndex * padding.width), row * rowHeight + y + padding.height, width, height)];
@@ -144,7 +154,7 @@
 - (int)sectionIndexForContentOffset:(CGFloat)offset{
 	int sectionIndex = 0;
 	
-	for(CHGridLayoutSection *section in _sectionTitles){
+	for(CHGridLayoutSection *section in sectionTitles){
 		if(section.yCoordinate <= offset && offset > 0){
 			sectionIndex = section.section;
 		}
@@ -154,7 +164,7 @@
 }
 
 - (CGFloat)yCoordinateForTitleOfSection:(int)section{
-	return [[_sectionTitles objectAtIndex:section] yCoordinate];
+	return [[sectionTitles objectAtIndex:section] yCoordinate];
 }
 
 - (CHSectionRange)sectionRangeForContentOffset:(CGFloat)offset andHeight:(CGFloat)height{
@@ -164,14 +174,20 @@
 	BOOL firstRun = YES;
 	int currentSection = [self sectionIndexForContentOffset:offset];
 	
-	for(CHGridLayoutSection *section in _sectionTitles){
-		if(firstRun && section.section >= currentSection){
-			start = section.section;
+	float firstY = (offset - pixelMargin);
+	float secondY = (offset + height + pixelMargin);
+	
+	for(CHGridLayoutSection *section in sectionTitles){
+		int s = section.section;
+		float sy = section.yCoordinate;
+		
+		if(firstRun && s >= currentSection){
+			start = s;
 			firstRun = NO;
 		}
 		
-		if(section.yCoordinate > (offset - pixelMargin) && section.yCoordinate <  (offset + height + pixelMargin)){
-			end = section.section;
+		if(sy > firstY && sy <  secondY){
+			end = s;
 		}
 		
 		if(start > end) end = start;
@@ -183,7 +199,7 @@
 - (CHGridIndexPath)closestIndexPathToContentOffsetY:(CGFloat)offset{
 	CHGridLayoutTile *closestTile = nil;
 	
-	for(NSMutableArray *section in _index){
+	for(NSMutableArray *section in index){
 		for(CHGridLayoutTile *tile in section){
 			if(tile.rect.origin.y > offset){
 				if(closestTile == nil){
@@ -196,14 +212,13 @@
 	}
 	
 	if(closestTile != nil){
-		NSLog(@"closest indexPath.section = %i tileIndex = %i", closestTile.indexPath.section, closestTile.indexPath.tileIndex);
 		return [closestTile indexPath];
 	}
 	return CHGridIndexPathMake(0, 0);
 }
 
 - (CGRect)tileFrameForIndexPath:(CHGridIndexPath)indexPath{
-	NSMutableArray *sectionTiles = [_index objectAtIndex:indexPath.section];
+	NSMutableArray *sectionTiles = [index objectAtIndex:indexPath.section];
 	return [[sectionTiles objectAtIndex:indexPath.tileIndex] rect];
 }
 
@@ -211,10 +226,13 @@
 	BOOL first = NO;
 	CHGridIndexRange indexRange = {CHGridIndexPathMake(0, 0),CHGridIndexPathMake(0, 0)};
 	
-	for(NSMutableArray *sectionArray in _index){
+	float firstY = (height + offset + pixelMargin);
+	float secondY = offset - pixelMargin;
+	
+	for(NSMutableArray *sectionArray in index){
 		for(CHGridLayoutTile *tile in sectionArray){
-			if(tile.rect.origin.y < (height + offset + pixelMargin) && tile.rect.origin.y + tile.rect.size.height >= offset - pixelMargin){
-				if(first == NO){
+			if(tile.rect.origin.y < firstY && tile.rect.origin.y + tile.rect.size.height >= secondY){
+				if(!first){
 					indexRange.start = [tile indexPath];
 					first = YES;
 				}
@@ -230,9 +248,9 @@
 
 - (CGRect)centerRect:(CGRect)smallerRect inLargerRect:(CGRect)largerRect roundUp:(BOOL)roundUp{
 	if (roundUp)
-		return CGRectMake(ceil((largerRect.size.width - smallerRect.size.width) / 2), ceil((largerRect.size.height - smallerRect.size.height) / 2), smallerRect.size.width, smallerRect.size.height);
+		return CGRectMake(ceilf((largerRect.size.width - smallerRect.size.width) / 2), ceilf((largerRect.size.height - smallerRect.size.height) / 2), smallerRect.size.width, smallerRect.size.height);
 	
-	return CGRectMake(floor((largerRect.size.width - smallerRect.size.width) / 2), floor((largerRect.size.height - smallerRect.size.height) / 2), smallerRect.size.width, smallerRect.size.height);
+	return CGRectMake(floorf((largerRect.size.width - smallerRect.size.width) / 2), floorf((largerRect.size.height - smallerRect.size.height) / 2), smallerRect.size.width, smallerRect.size.height);
 }
 
 @end

@@ -25,6 +25,8 @@
 }
 
 - (void)setImage:(UIImage *)i{
+	if([image isEqual:i]) return;
+	
 	[image release];
 	image = [i retain];
 	[self setNeedsDisplay];
@@ -33,47 +35,38 @@
 - (void)drawContentRect:(CGRect)rect{
 	CGContextRef c = UIGraphicsGetCurrentContext();
 	CGSize imageSize = [image size];
-	CGRect b = rect;
 	
-	float newWidth = 0.0;
-	float newHeight = 0.0;
-	float leftOffset = 0.0;
-	float topOffset = 0.0;
+	[[UIColor darkGrayColor] set];
+	CGContextFillRect(c, rect);
+	
+	float newWidth = 0.0f;
+	float newHeight = 0.0f;
+	float leftOffset = rect.origin.x;
+	float topOffset = rect.origin.y;
 	
 	if(scalesImageToFit){
-		float heightDividedByWidth = imageSize.height / imageSize.width;
-		float widthDividedByHeight = imageSize.width / imageSize.height;
+		float maxSize = fmaxf(rect.size.width, rect.size.height);
 		
-		BOOL isPortrait = (heightDividedByWidth >= 1.0);
-		float largerSide = fmax(b.size.height, b.size.width);
-		float smallerSide = fmin(b.size.height, b.size.width);
+		float widthScale = imageSize.width / maxSize;
+		float heightScale = imageSize.height / maxSize;
 		
-		if(isPortrait){
-			newWidth = largerSide;
-			newHeight = ceil(largerSide * heightDividedByWidth);
-			leftOffset = 0.0;
-			topOffset = ceil((smallerSide - newHeight) / 2) - b.origin.y;
-		} else{
-			newWidth = ceil(largerSide * widthDividedByHeight);
-			newHeight = largerSide;
-			leftOffset = ceil((smallerSide - newWidth) / 2);
-			topOffset = 0.0 - b.origin.y;
-		}
+		float scale = fminf(widthScale, heightScale);
+		
+		newWidth = imageSize.width / scale;
+		newHeight = imageSize.height / scale;
 	}else{
-		if(b.size.height > imageSize.height) topOffset = ceil((b.size.height - imageSize.height) / 2) - b.origin.y;
-		else topOffset = ceil((b.size.height - imageSize.height) / 2) - b.origin.y;
-		
-		if(b.size.width > imageSize.width) leftOffset = ceil((b.size.width - imageSize.width) / 2);
-		else leftOffset = ceil((b.size.width - imageSize.width) / 2);
-		
 		newWidth = imageSize.width;
 		newHeight = imageSize.height;
 	}
 	
+	if(rect.size.height < imageSize.height) topOffset += ceil((rect.size.height - imageSize.height) / 2);
+	if(rect.size.width < imageSize.width) leftOffset += ceil((rect.size.width - imageSize.width) / 2);
+	
 	CGRect imageRect = CGRectMake(leftOffset, topOffset, newWidth, newHeight);
+	//[image drawInRect:imageRect];
 	
 	CGContextSaveGState(c);
-	CGContextTranslateCTM(c, 0.0f, b.size.height);
+	CGContextTranslateCTM(c, 0.0f, rect.size.height + rect.origin.y);
 	CGContextScaleCTM(c, 1.0f, -1.0f);
 	CGContextDrawImage(c, imageRect, [image CGImage]);
 	CGContextRestoreGState(c);
@@ -85,23 +78,21 @@
 	
 	CGContextClipToRect(c, borderRect);
 	
-	CGContextSetStrokeColorWithColor(c, [[UIColor colorWithWhite:1.0 alpha:0.15] CGColor]); //light border
-	CGContextStrokeRectWithWidth(c, borderRect, 4.0);
+	CGContextSetStrokeColorWithColor(c, [[UIColor colorWithWhite:1.0f alpha:0.15f] CGColor]);
+	CGContextStrokeRectWithWidth(c, rect, 4.0f);
 	
-	CGContextSetStrokeColorWithColor(c, [[UIColor colorWithWhite:0.0 alpha:0.4] CGColor]); // dark border
-	CGContextStrokeRectWithWidth(c, borderRect, 2.0);
-	
-	//draw tile index -- used for debugging
+	CGContextSetStrokeColorWithColor(c, [[UIColor colorWithWhite:0.0f alpha:0.4f] CGColor]);
+	CGContextStrokeRectWithWidth(c, rect, 2.0f);
 	
 	/*NSString *title = [NSString stringWithFormat:@"%i",indexPath.tileIndex];
-	float textWidth = b.size.width - (15.0 * 2);
+	float textWidth = rect.size.width - (15.0 * 2);
 	UIFont *f = [UIFont boldSystemFontOfSize:16.0];
 	
 	[[UIColor whiteColor] set];
 	CGContextSetShadow(c, CGSizeMake(0, -1.0), 1.0);
 	
 	CGSize fontSize = [title sizeWithFont:f forWidth:textWidth lineBreakMode:UILineBreakModeTailTruncation];
-	[title drawInRect:CGRectMake(15.0, ceil((b.size.height - fontSize.height) / 2), textWidth, fontSize.height) withFont:f lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];*/
+	[title drawInRect:CGRectMake(15.0, ceil((rect.size.height - fontSize.height) / 2), textWidth, fontSize.height) withFont:f lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];*/
 }
 
 @end

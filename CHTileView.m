@@ -21,9 +21,9 @@
 		
 		contentBackgroundColor = [[UIColor whiteColor] retain];
 		
-		shadowOffset = CGSizeMake(0, 0);
-		shadowColor = [[UIColor colorWithWhite:0.0 alpha:0.5] retain];
-		shadowBlur = 0.0;
+		shadowOffset = CGSizeMake(0.0f, 0.0f);
+		shadowColor = [[UIColor colorWithWhite:0.0f alpha:0.5f] retain];
+		shadowBlur = 0.0f;
 		
 		[self setBackgroundColor:[UIColor whiteColor]];
 		[self setOpaque:YES];
@@ -59,31 +59,28 @@
 	
 	CGRect contentRect = CGRectInset(rect, shadowBlur, shadowBlur);
 	if(newShadowOffset.height < 0) contentRect.size.height -= fabsf(newShadowOffset.height);
+	if(newShadowOffset.height > 0) contentRect.size.height -= fabsf(newShadowOffset.height);
 	if(newShadowOffset.width < 0) contentRect.size.width -= fabsf(newShadowOffset.width);
-	if(newShadowOffset.height > 0) contentRect.origin.y += fabsf(newShadowOffset.height);
 	if(newShadowOffset.width > 0) contentRect.size.width -= fabsf(newShadowOffset.width);
 	
 	//draw shadow
 	
-	if(newShadowOffset.height > 0 || newShadowOffset.width > 0 || shadowBlur > 0){
-		if(!selected){
-			CGContextSaveGState(c);
-			CGContextSetShadowWithColor(c, newShadowOffset, shadowBlur, [shadowColor CGColor]);
-			[contentBackgroundColor set];
-			CGContextFillRect(c, contentRect);
-			CGContextRestoreGState(c);
-		}else {
-			contentRect.origin.y += 1.0;
-		}
+	if((newShadowOffset.height > 0 || newShadowOffset.width > 0 || shadowBlur > 0) && !selected){
+		CGContextSaveGState(c);
+		CGContextSetShadowWithColor(c, newShadowOffset, shadowBlur, [shadowColor CGColor]);
+		[contentBackgroundColor set];
+		CGContextFillRect(c, contentRect);
+		CGContextRestoreGState(c);
+	}else{
+		[contentBackgroundColor set];
+		CGContextFillRect(c, contentRect);
 	}
 	
-	CGContextSaveGState(c);
 	CGContextClipToRect(c, contentRect);
 	[self drawContentRect:contentRect];
-	CGContextRestoreGState(c);
 	
 	if(selected){
-		[[UIColor colorWithWhite:0.0 alpha:0.3] set];
+		[[UIColor colorWithWhite:0.0f alpha:0.3f] set];
 		CGContextFillRect(c, contentRect);
 	}
 }
