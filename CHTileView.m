@@ -19,13 +19,13 @@
 		selected = NO;
 		reuseIdentifier = [reuseId copy];
 		
-		contentBackgroundColor = [[UIColor whiteColor] retain];
+		if(contentBackgroundColor == nil)
+			contentBackgroundColor = [[UIColor whiteColor] retain];
 		
 		shadowOffset = CGSizeMake(0.0f, 0.0f);
 		shadowColor = [[UIColor colorWithWhite:0.0f alpha:0.5f] retain];
 		shadowBlur = 0.0f;
 		
-		[self setBackgroundColor:[UIColor whiteColor]];
 		[self setOpaque:YES];
 		[self setContentMode:UIViewContentModeRedraw];
 	}
@@ -49,13 +49,18 @@
 
 - (void)setIndexPath:(CHGridIndexPath)index{
 	indexPath = index;
-	[self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect{
     CGContextRef c = UIGraphicsGetCurrentContext();
 	
-	CGSize newShadowOffset = shadowOffset;
+	CGSize newShadowOffset;
+	
+	#ifdef __IPHONE_3_2
+	newShadowOffset = CGSizeMake(shadowOffset.width, shadowOffset.height);
+	#else
+	newShadowOffset = CGSizeMake(shadowOffset.width, -shadowOffset.height);
+	#endif
 	
 	CGRect contentRect = CGRectInset(rect, shadowBlur, shadowBlur);
 	if(newShadowOffset.height < 0) contentRect.size.height -= fabsf(newShadowOffset.height);

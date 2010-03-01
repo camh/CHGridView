@@ -42,7 +42,6 @@ static CHSectionRange CHSectionRangeMake(int start, int end){
 	float				rowHeight;
 	float				pixelMargin;
 	float				sectionTitleHeight;
-	BOOL				dynamicallyResizeTilesToFillSpace; 
 }
 
 @property (nonatomic, readonly) NSMutableArray		*index;
@@ -55,7 +54,6 @@ static CHSectionRange CHSectionRangeMake(int start, int end){
 @property (nonatomic) float							preLoadMultiplier;
 @property (nonatomic) float							rowHeight;
 @property (nonatomic) float							sectionTitleHeight;
-@property (nonatomic) BOOL							dynamicallyResizeTilesToFillSpace;
 
 - (void)setSections:(int)sections;
 - (void)setNumberOfTiles:(int)tiles ForSectionIndex:(int)section;

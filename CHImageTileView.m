@@ -25,19 +25,13 @@
 }
 
 - (void)setImage:(UIImage *)i{
-	if([image isEqual:i]) return;
-	
 	[image release];
 	image = [i retain];
-	[self setNeedsDisplay];
 }
 
 - (void)drawContentRect:(CGRect)rect{
 	CGContextRef c = UIGraphicsGetCurrentContext();
 	CGSize imageSize = [image size];
-	
-	[[UIColor darkGrayColor] set];
-	CGContextFillRect(c, rect);
 	
 	float newWidth = 0.0f;
 	float newHeight = 0.0f;
@@ -78,8 +72,8 @@
 	
 	CGContextClipToRect(c, borderRect);
 	
-	CGContextSetStrokeColorWithColor(c, [[UIColor colorWithWhite:1.0f alpha:0.15f] CGColor]);
-	CGContextStrokeRectWithWidth(c, rect, 4.0f);
+	//CGContextSetStrokeColorWithColor(c, [[UIColor colorWithWhite:1.0f alpha:0.15f] CGColor]);
+	//CGContextStrokeRectWithWidth(c, rect, 4.0f);
 	
 	CGContextSetStrokeColorWithColor(c, [[UIColor colorWithWhite:0.0f alpha:0.4f] CGColor]);
 	CGContextStrokeRectWithWidth(c, rect, 2.0f);

@@ -24,7 +24,7 @@
 @end
 
 @implementation CHGridView
-@synthesize dataSource, dynamicallyResizeTilesToFillSpace, allowsSelection, padding, preLoadMultiplier, rowHeight, perLine, sectionTitleHeight, shadowOffset, shadowColor, shadowBlur;
+@synthesize dataSource, centerTilesInGrid, allowsSelection, padding, preLoadMultiplier, rowHeight, perLine, sectionTitleHeight, shadowOffset, shadowColor, shadowBlur;
 
 - (id)init{
 	return [self initWithFrame:CGRectZero];
@@ -50,7 +50,7 @@
 		sections = 1;
 		
 		allowsSelection = YES;
-		dynamicallyResizeTilesToFillSpace = NO;
+		centerTilesInGrid = NO;
 		padding = CGSizeMake(10.0f, 10.0f);
 		rowHeight = 100.0f;
 		perLine = 5;
@@ -137,14 +137,13 @@
 	CHTileView *tile = [dataSource tileForIndexPath:indexPath inGridView:self];
 	
 	[tile setIndexPath:indexPath];
-	[tile setBackgroundColor:self.backgroundColor];
 	[tile setSelected:NO];
 	
 	[tile setShadowOffset:shadowOffset];
 	[tile setShadowColor:shadowColor];
 	[tile setShadowBlur:shadowBlur];
 
-	if([[self delegate] respondsToSelector:@selector(sizeForTileAtIndex:inGridView:)] && !dynamicallyResizeTilesToFillSpace){
+	if([[self delegate] respondsToSelector:@selector(sizeForTileAtIndex:inGridView:)] && centerTilesInGrid){
 		CGSize size = [[self delegate] sizeForTileAtIndex:indexPath inGridView:self];
 		CGRect centeredRect = [layout centerRect:CGRectMake(0.0f, 0.0f, size.width, size.height) inLargerRect:r roundUp:NO];
 		centeredRect.origin.y += r.origin.y;
@@ -156,12 +155,14 @@
 		[tile setAutoresizingMask:(UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth)];
 	}
 	
+	[tile setBackgroundColor:self.backgroundColor];
+	
 	[self insertSubview:tile atIndex:0];
 	[visibleTiles addObject:tile];
 }
 
 - (void)reuseHiddenTiles{
-	NSMutableArray *toReuse = [NSMutableArray array];
+	NSMutableArray *toReuse = [[NSMutableArray alloc] init];
 	
 	CGRect b = self.bounds;
 	CGFloat contentOffsetY = self.contentOffset.y;
@@ -179,6 +180,7 @@
 	}
 	
 	[visibleTiles removeObjectsInArray:toReuse];
+	[toReuse release];
 }
 
 - (void)removeSectionTitleNotInRange:(CHSectionRange)range{
@@ -201,7 +203,7 @@
 	[self removeAllSubviews];
 	[visibleTiles removeAllObjects];
 	[visibleSectionTitles removeAllObjects];
-	
+
 	CGRect b = [self bounds];
 	
 	if([dataSource respondsToSelector:@selector(numberOfSectionsInGridView:)]){
@@ -219,7 +221,6 @@
 	[layout setPreLoadMultiplier:preLoadMultiplier];
 	[layout setRowHeight:rowHeight];
 	[layout setSectionTitleHeight:sectionTitleHeight];
-	[layout setDynamicallyResizeTilesToFillSpace:dynamicallyResizeTilesToFillSpace];
 	
 	[layout setSections:sections];
 	int i;
@@ -233,7 +234,11 @@
 	[self setNeedsLayout];
 	
 	maxReusable = ceilf((self.bounds.size.height / rowHeight) * perLine) * 2;
-	[self setContentSize:CGSizeMake(b.size.width, [layout contentHeight])];
+	
+	if([layout contentHeight] > b.size.height)
+		[self setContentSize:CGSizeMake(b.size.width, [layout contentHeight])];
+	else
+		[self setContentSize:CGSizeMake(b.size.width, b.size.height + 1.0)];
 }
 
 - (CHTileView *)dequeueReusableTileWithIdentifier:(NSString *)identifier{
@@ -260,6 +265,15 @@
 	CGFloat pixelMargin = rowHeight * [layout preLoadMultiplier];
 	CGFloat firstY = (b.size.height + contentOffsetY + pixelMargin);
 	CGFloat secondY = contentOffsetY - pixelMargin;
+
+	BOOL hasSections = (sections > 1);
+	
+	if(hasSections){
+		CHSectionRange sectionRange = [layout sectionRangeForContentOffset:contentOffsetY andHeight:b.size.height];
+		[self loadVisibleSectionTitlesForSectionRange:sectionRange];
+		[self calculateSectionTitleOffset];
+		
+	}
 	
 	for(CHGridLayoutTile *tile in [layout justTiles]){
 		CGRect r = [tile rect];
@@ -267,19 +281,15 @@
 			[self loadVisibleTileForIndexPath:tile.indexPath withRect:r];
 		}
 	}
+
 	
 	//if([[self delegate] respondsToSelector:@selector(visibleTilesChangedTo:)]) [[self delegate] visibleTilesChangedTo:visibleTiles.count];
-	
-	if(sections > 1){
-		CHSectionRange sectionRange = [layout sectionRangeForContentOffset:contentOffsetY andHeight:b.size.height];
-		[self loadVisibleSectionTitlesForSectionRange:sectionRange];
-		[self calculateSectionTitleOffset];
-	}
 }
 
 - (void)removeAllSubviews{
 	[visibleTiles makeObjectsPerformSelector:@selector(removeFromSuperview)];
 	[visibleSectionTitles makeObjectsPerformSelector:@selector(removeFromSuperview)];
+	[reusableTiles makeObjectsPerformSelector:@selector(removeFromSuperview)];
 }
 
 #pragma mark tiles accessor methods
@@ -357,7 +367,7 @@
 	}
 }
 
-- (void)deselecSelectedTile{
+- (void)deselectSelectedTile{
 	if(selectedTile){
 		[self deselectTileAtIndexPath:selectedTile.indexPath];
 		selectedTile = nil;
@@ -378,8 +388,8 @@
 	dataSource = d;
 }
 
-- (void)setDynamicallyResizeTilesToFillSpace:(BOOL)dynamically{
-	dynamicallyResizeTilesToFillSpace = dynamically;
+- (void)setCenterTilesInGrid:(BOOL)b{
+	centerTilesInGrid = b;
 	[self setNeedsLayout];
 }
 

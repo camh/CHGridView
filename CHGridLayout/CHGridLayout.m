@@ -17,7 +17,7 @@
 #define SLOW_DEVICE_PRELOAD 2.0f
 
 @implementation CHGridLayout
-@synthesize index, justTiles, gridWidth, contentHeight, padding, perLine, preLoadMultiplier, rowHeight, sectionTitleHeight, dynamicallyResizeTilesToFillSpace;
+@synthesize index, justTiles, gridWidth, contentHeight, padding, perLine, preLoadMultiplier, rowHeight, sectionTitleHeight;
 
 - (id)init{
 	if(self = [super init]){
@@ -96,6 +96,7 @@
 
 - (void)clearData{
 	[index removeAllObjects];
+	[justTiles removeAllObjects];
 	[sectionTitles removeAllObjects];
 	contentHeight = 0.0f;
 }

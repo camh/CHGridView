@@ -26,7 +26,7 @@ NOTICE: **CHGridView is not production-level software yet. Don't use it in shipp
 
 Exactly like UITableView. Just implement the two required data source methods: `numberOfTilesInSection` and `tileForIndexPath`. CHGridView assumes there is at least one section. The method `tileForIndexPath` works very much like UITableView; CHGridView reuses tiles just like UITableView reuses cells. Call `dequeueReusableTileWithIdentifier` to get a reusable tile, if it's `nil`, `init` and `autorelease` a new tile and return it.
 
-There's two basic styles to use in GHGridView, one that resembles the Photos application, and one that mimics iPhoto and the iPad photo grid. The property that controls it is called `dynamicallyResizeTilesToFillSpace`. Set it to `YES` for the  Photos app style.
+There's two basic styles to use in GHGridView, one that resembles the Photos application, and one that mimics iPhoto and the iPad photo grid. The property that controls it is called `centerTilesInGrid`. Set it to `YES` for the iPhoto  style.
 
 Row height, tiles per line, padding, section title height and shadow are all properties of CHGridView. These are not meant to change often like the data source and delegate methods. However, if you do change them, make sure to call `reloadData` to recalculate the layout.
 
@@ -59,7 +59,7 @@ If you disable scrolling with `setScrollingEnabled`, you can probably use this a
 
 I've tested CHGridView informally with a test application on both my iPhones. For my data source, I used 31 images to populate 1,984 tiles separated with 64 sections. They were exported from iPhoto as PNGs with a maximum width of 160 pixels, then  were drawn centered and cropped in CHImageTileView. Scrolling performance is not as good as Apple's Photos grid view, especially on my original iPhone.
 
-- Original iPhone: about 12 - 30 fps.
+- Original iPhone: about 18 - 35 fps.
 - iPhone 3G3: about 30 - 50 fps.
 
 Admittedly, performance could be better. If you see something that could be improved, send an email to [me@cameron.io](mailto:me@cameron.io).

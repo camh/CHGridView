@@ -53,7 +53,7 @@
 	BOOL							isSlowDevice;
 
 	//settable properties
-	BOOL							dynamicallyResizeTilesToFillSpace;
+	BOOL							centerTilesInGrid;
 	BOOL							allowsSelection;
 	CGSize							padding;
 	float							preLoadMultiplier;
@@ -69,7 +69,7 @@
 @property (nonatomic, assign) id<CHGridViewDataSource> dataSource;
 @property (nonatomic, assign) id<CHGridViewDelegate,UIScrollViewDelegate> delegate;
 
-@property (nonatomic) BOOL						dynamicallyResizeTilesToFillSpace;
+@property (nonatomic) BOOL						centerTilesInGrid;
 @property (nonatomic) BOOL						allowsSelection;
 @property (nonatomic) CGSize					padding;
 @property (nonatomic) float						preLoadMultiplier;
@@ -90,6 +90,6 @@
 - (void)scrollToTileAtIndexPath:(CHGridIndexPath)indexPath animated:(BOOL)animated;
 
 - (void)deselectTileAtIndexPath:(CHGridIndexPath)indexPath;
-- (void)deselecSelectedTile;
+- (void)deselectSelectedTile;
 
 @end
