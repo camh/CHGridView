@@ -108,6 +108,7 @@
 		tile = [[[CHImageTileView alloc] initWithFrame:CGRectZero reuseIdentifier:TileIndentifier] autorelease];
 	
 	[tile setImage:[images objectAtIndex:indexPath.tileIndex]];
+	[tile setScalesImageToFit:YES];
 	
 	return tile;
 }

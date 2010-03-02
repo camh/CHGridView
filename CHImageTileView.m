@@ -19,7 +19,7 @@
 		if(image == nil)
 			image = [[UIImage alloc] init];
 		
-		scalesImageToFit = NO;
+		scalesImageToFit = YES;
 	}
 	return self;
 }
@@ -39,12 +39,12 @@
 	float topOffset = rect.origin.y;
 	
 	if(scalesImageToFit){
-		float maxSize = fmaxf(rect.size.width, rect.size.height);
+		float size = fmax(rect.size.width, rect.size.height);
 		
-		float widthScale = imageSize.width / maxSize;
-		float heightScale = imageSize.height / maxSize;
+		float widthScale = imageSize.width / size;
+		float heightScale = imageSize.height / size;
 		
-		float scale = fminf(widthScale, heightScale);
+		float scale = fmin(widthScale, heightScale);
 		
 		newWidth = imageSize.width / scale;
 		newHeight = imageSize.height / scale;
@@ -53,8 +53,8 @@
 		newHeight = imageSize.height;
 	}
 	
-	if(rect.size.height < imageSize.height) topOffset += ceil((rect.size.height - imageSize.height) / 2);
-	if(rect.size.width < imageSize.width) leftOffset += ceil((rect.size.width - imageSize.width) / 2);
+	if(rect.size.height > newHeight) topOffset += ceil((rect.size.height - imageSize.height) / 2);
+	if(rect.size.width > newWidth) leftOffset += ceil((rect.size.width - imageSize.width) / 2);
 	
 	CGRect imageRect = CGRectMake(leftOffset, topOffset, newWidth, newHeight);
 	//[image drawInRect:imageRect];

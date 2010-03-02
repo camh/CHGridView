@@ -315,6 +315,8 @@
 		B1E7A0A5113CF4D200253EE0 /* 97.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B1E79F7F113CF4D100253EE0 /* 97.jpg */; };
 		B1E7A0A6113CF4D200253EE0 /* 98.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B1E79F80113CF4D100253EE0 /* 98.jpg */; };
 		B1E7A0A7113CF4D200253EE0 /* 99.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B1E79F81113CF4D100253EE0 /* 99.jpg */; };
+		B1E7A164113D025F00253EE0 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = B1E7A162113D025F00253EE0 /* LICENSE.txt */; };
+		B1E7A165113D025F00253EE0 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = B1E7A163113D025F00253EE0 /* README.markdown */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -638,6 +640,8 @@
 		B1E79F7F113CF4D100253EE0 /* 97.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 97.jpg; path = flickrimg/97.jpg; sourceTree = SOURCE_ROOT; };
 		B1E79F80113CF4D100253EE0 /* 98.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 98.jpg; path = flickrimg/98.jpg; sourceTree = SOURCE_ROOT; };
 		B1E79F81113CF4D100253EE0 /* 99.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 99.jpg; path = flickrimg/99.jpg; sourceTree = SOURCE_ROOT; };
+		B1E7A162113D025F00253EE0 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.txt; path = ../LICENSE.txt; sourceTree = SOURCE_ROOT; };
+		B1E7A163113D025F00253EE0 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.markdown; path = ../README.markdown; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -718,6 +722,8 @@
 		B1E79E12113CEFB400253EE0 /* CHGridView */ = {
 			isa = PBXGroup;
 			children = (
+				B1E7A162113D025F00253EE0 /* LICENSE.txt */,
+				B1E7A163113D025F00253EE0 /* README.markdown */,
 				B1E79E1A113CEFC200253EE0 /* CHGridView.h */,
 				B1E79E1B113CEFC200253EE0 /* CHGridView.m */,
 				B1E79E20113CEFC200253EE0 /* CHTileView.h */,
@@ -1383,6 +1389,8 @@
 				B1E7A0A5113CF4D200253EE0 /* 97.jpg in Resources */,
 				B1E7A0A6113CF4D200253EE0 /* 98.jpg in Resources */,
 				B1E7A0A7113CF4D200253EE0 /* 99.jpg in Resources */,
+				B1E7A164113D025F00253EE0 /* LICENSE.txt in Resources */,
+				B1E7A165113D025F00253EE0 /* README.markdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

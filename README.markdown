@@ -26,7 +26,7 @@ NOTICE: **CHGridView is not production-level software yet. Don't use it in shipp
 
 Exactly like UITableView. Just implement the two required data source methods: `numberOfTilesInSection` and `tileForIndexPath`. CHGridView assumes there is at least one section. The method `tileForIndexPath` works very much like UITableView; CHGridView reuses tiles like UITableView reuses cells. Call `dequeueReusableTileWithIdentifier` to get a reusable tile, if it's `nil`, `init` and `autorelease` a new tile and return it.
 
-There's two basic styles to use in GHGridView, one that resembles the Photos application, and one that mimics iPhoto and the iPad photo grid. The property that controls it is called `centerTilesInGrid`. Set it to `YES` for the iPhoto  style.
+There's two basic styles to use in GHGridView, one that resembles the Photos application, and one that mimics iPhoto and the iPad photo grid. The property that controls it is called `centerTilesInGrid`. Set it to `YES` for the iPhoto  style. If you want the iPhoto style, you need to make sure `rowHeight` is higher than your tallest image.
 
 Row height, tiles per line, padding, section title height and shadow are all properties of CHGridView. These are not meant to change often like the data source and delegate methods. However, if you do change them, make sure to call `reloadData` to recalculate the layout.
 
@@ -43,7 +43,6 @@ CHGridView only loads visible tiles and section titles, plus four rows above and
 CHGridView, like most scalable computer interfaces, makes trade-offs. It's currently optimized to for low memory usage, but requires more processor cyles. Performance is roughly the same if you use 3000 tiles or 200 tiles. Optimally CHGridView should be smart enough to switch this trade-off at some point (if < 400 tiles, for instance).
 
 - CHTileView shadows are not transparent, they are rendered onto the same background color as CHGridView. It's possible to change it if you long for the scrolling performance of Android or Palm webOS.
-- CHImageTileView supports scaling images up/down to fit its frame (and preserves aspect ratio) but it's not fast enough to use. The property is called `scalesImageToFit` and you should never use it.
 - Section headers are only transparent when they need to be, otherwise they are opaque. If you subclass CHSectionHeaderView, you'll need to check `[self isOpaque]` to compensate for transparency if needed.
 
 ###Roadmap (roughly in order):
