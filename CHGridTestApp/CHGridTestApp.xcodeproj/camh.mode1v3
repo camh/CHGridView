@@ -296,7 +296,7 @@
 							<real>259</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>147 135 960 1043 0 0 1920 1178 </string>
+						<string>67 135 960 1043 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -326,14 +326,16 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B1E7A0EF113CF7D300253EE0</string>
+										<string>B1E7A10F113CFB4700253EE0</string>
 										<key>history</key>
 										<array>
 											<string>B1E79E44113CF25400253EE0</string>
 											<string>B1E79E57113CF29500253EE0</string>
 											<string>B1E7A0A8113CF55F00253EE0</string>
-											<string>B1E7A0B0113CF5AD00253EE0</string>
-											<string>B1E7A0E0113CF76200253EE0</string>
+											<string>B1E7A0F2113CF8F900253EE0</string>
+											<string>B1E7A0F9113CF92300253EE0</string>
+											<string>B1E7A107113CFA6400253EE0</string>
+											<string>B1E7A108113CFA6400253EE0</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -347,7 +349,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {679, 997}}</string>
 								<key>RubberWindowFrame</key>
-								<string>147 135 960 1043 0 0 1920 1178 </string>
+								<string>67 135 960 1043 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -367,7 +369,7 @@
 								<key>Frame</key>
 								<string>{{0, 1002}, {679, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>147 135 960 1043 0 0 1920 1178 </string>
+								<string>67 135 960 1043 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -531,6 +533,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>B1E7A110113CFB4700253EE0</string>
 		<string>B1E7A0E8113CF7C600253EE0</string>
 		<string>B1E7A0E6113CF77500253EE0</string>
 		<string>1C78EAAD065D492600B07095</string>
@@ -539,7 +542,7 @@
 		<string>/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/CHGridTestApp.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>147 135 960 1043 0 0 1920 1178 </string>
+	<string>67 135 960 1043 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

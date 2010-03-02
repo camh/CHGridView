@@ -18,6 +18,7 @@
         if(myGridView == nil){
 			myGridView = [[CHGridView alloc] initWithFrame:CGRectZero];
 		}
+		
 		if(images == nil){
 			images = [[NSMutableArray alloc] init];
 		}
@@ -37,8 +38,8 @@
     [super viewDidLoad];
 	
 	int i;
-	for(i = 0; i < 294; i ++){
-		[images addObject:[UIImage imageNamed:[NSString stringWithFormat:@"%i.jpg",i + 1]]];
+	for(i = 0; i < 294; i++){
+		[images addObject:[UIImage imageNamed:[NSString stringWithFormat:@"%i.jpg", i + 1]]];
 	}
 	
 	// set properties of myGridView
