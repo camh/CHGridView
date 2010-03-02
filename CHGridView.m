@@ -56,7 +56,7 @@
 		perLine = 5;
 		sectionTitleHeight = 25.0f;
 		
-		preLoadMultiplier = 5.0f;
+		preLoadMultiplier = 6.0f;
 		
 		[self setBackgroundColor:[UIColor whiteColor]];
 		
@@ -96,7 +96,7 @@
 			CHSectionHeaderView *sectionHeader = nil;
 			
 			if([[self delegate] respondsToSelector:@selector(titleViewForHeaderOfSection:inGridView:)]){
-				sectionHeader = [[self delegate] titleViewForHeaderOfSection:i inGridView:self];
+				sectionHeader = [[self delegate] headerViewForSection:i inGridView:self];
 				[sectionHeader setFrame:CGRectMake(b.origin.x, yCoordinate, b.size.width, sectionTitleHeight)];
 			}else{
 				sectionHeader = [[CHSectionHeaderView alloc] initWithFrame:CGRectMake(b.origin.x, yCoordinate, b.size.width, sectionTitleHeight)];
@@ -240,14 +240,22 @@
 }
 
 - (CHTileView *)dequeueReusableTileWithIdentifier:(NSString *)identifier{
+	CHTileView *foundTile = nil;
+	BOOL found = NO;
+	
 	for(CHTileView *tile in reusableTiles){
-		if([[tile reuseIdentifier] isEqualToString:identifier]){
-			[[tile retain] autorelease];
-			[reusableTiles removeObject:tile];
-			return tile;
+		if(!found && [[tile reuseIdentifier] isEqualToString:identifier]){
+			foundTile = tile;
+			found = YES;
 		}
 	}
-	return nil;
+	
+	if(foundTile){
+		[[foundTile retain] autorelease];
+		[reusableTiles removeObject:foundTile];
+	}
+	
+	return foundTile;
 }
 
 #pragma mark view and layout methods

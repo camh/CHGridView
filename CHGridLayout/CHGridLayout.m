@@ -14,7 +14,7 @@
 #include <sys/types.h>  
 #include <sys/sysctl.h> 
 
-#define SLOW_DEVICE_PRELOAD 3.0f
+#define SLOW_DEVICE_PRELOAD 2.0f
 
 @implementation CHGridLayout
 @synthesize index, justTiles, gridWidth, contentHeight, padding, perLine, preLoadMultiplier, rowHeight, sectionTitleHeight;
@@ -30,7 +30,7 @@
 		if(justTiles == nil)
 			justTiles = [[NSMutableArray alloc] init];
 		
-		preLoadMultiplier = 5.0f;
+		preLoadMultiplier = 6.0f;
 		
 		contentHeight = 0.0f;
 		rowHeight = 0.0f;

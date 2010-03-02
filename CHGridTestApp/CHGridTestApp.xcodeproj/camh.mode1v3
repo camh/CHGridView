@@ -265,13 +265,17 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>080E96DDFE201D6D7F000001</string>
+								<string>B1E79E12113CEFB400253EE0</string>
+								<string>B1E79E13113CEFC200253EE0</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>5</integer>
+									<integer>17</integer>
+									<integer>15</integer>
+									<integer>6</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -296,7 +300,7 @@
 							<real>259</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>67 135 960 1043 0 0 1920 1178 </string>
+						<string>134 135 960 1043 0 0 1920 1178 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -314,7 +318,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>CHGridViewController.m</string>
+								<string>CHGridLayout.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -322,11 +326,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>CHGridViewController.m</string>
+										<string>CHGridLayout.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B1E7A10F113CFB4700253EE0</string>
+										<string>B1E7A124113CFFDE00253EE0</string>
 										<key>history</key>
 										<array>
 											<string>B1E79E44113CF25400253EE0</string>
@@ -335,7 +339,9 @@
 											<string>B1E7A0F2113CF8F900253EE0</string>
 											<string>B1E7A0F9113CF92300253EE0</string>
 											<string>B1E7A107113CFA6400253EE0</string>
-											<string>B1E7A108113CFA6400253EE0</string>
+											<string>B1E7A111113CFCD300253EE0</string>
+											<string>B1E7A120113CFF7100253EE0</string>
+											<string>B1E7A121113CFF7100253EE0</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -349,7 +355,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {679, 997}}</string>
 								<key>RubberWindowFrame</key>
-								<string>67 135 960 1043 0 0 1920 1178 </string>
+								<string>134 135 960 1043 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -369,7 +375,7 @@
 								<key>Frame</key>
 								<string>{{0, 1002}, {679, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>67 135 960 1043 0 0 1920 1178 </string>
+								<string>134 135 960 1043 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -533,16 +539,15 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>B1E7A110113CFB4700253EE0</string>
 		<string>B1E7A0E8113CF7C600253EE0</string>
 		<string>B1E7A0E6113CF77500253EE0</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>B1E79E0C113CEF8400253EE0</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/CHGridTestApp.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>67 135 960 1043 0 0 1920 1178 </string>
+	<string>134 135 960 1043 0 0 1920 1178 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -886,18 +891,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {650, 209}}</string>
+								<string>{{0, 0}, {1271, 690}}</string>
 								<key>RubberWindowFrame</key>
-								<string>94 905 650 250 0 0 1920 1178 </string>
+								<string>407 447 1271 731 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
 							<key>Proportion</key>
-							<string>209pt</string>
+							<string>690pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
-					<string>209pt</string>
+					<string>690pt</string>
 				</dict>
 			</array>
 			<key>Name</key>
@@ -917,11 +922,11 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>94 905 650 250 0 0 1920 1178 </string>
+			<string>407 447 1271 731 0 0 1920 1178 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
