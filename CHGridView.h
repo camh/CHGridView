@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CHTileView.h"
-#import "CHSectionTitleView.h"
+#import "CHSectionHeaderView.h"
 #import "CHGridLayout.h"
 
 @class CHGridView;
@@ -33,14 +33,14 @@
 	- (void)selectedTileAtIndexPath:(CHGridIndexPath)indexPath inGridView:(CHGridView *)gridView;
 	- (void)visibleTilesChangedTo:(int)tiles;
 	- (CGSize)sizeForTileAtIndex:(CHGridIndexPath)indexPath inGridView:(CHGridView *)gridView;
-	- (CHSectionTitleView *)titleViewForHeaderOfSection:(int)section inGridView:(CHGridView *)gridView;
+	- (CHSectionHeaderView *)titleViewForHeaderOfSection:(int)section inGridView:(CHGridView *)gridView;
 @end
 
 @interface CHGridView : UIScrollView {
 	CHGridLayout					*layout;
 	
 	NSMutableArray					*visibleTiles;
-	NSMutableArray					*visibleSectionTitles;
+	NSMutableArray					*visibleSectionHeaders;
 	NSMutableArray					*reusableTiles;
 	
 	id<CHGridViewDataSource>		dataSource;
@@ -60,10 +60,6 @@
 	float							rowHeight;
 	int								perLine;
 	float							sectionTitleHeight;
-	
-	CGSize							shadowOffset;
-	UIColor							*shadowColor;
-	CGFloat							shadowBlur;
 }
 
 @property (nonatomic, assign) id<CHGridViewDataSource> dataSource;
@@ -77,18 +73,15 @@
 @property (nonatomic) int						perLine;
 @property (nonatomic) float						sectionTitleHeight;
 
-@property (nonatomic) CGSize					shadowOffset;
-@property (nonatomic, retain) UIColor			*shadowColor;
-@property (nonatomic) CGFloat					shadowBlur;
-
 - (void)reloadData;
+- (void)reloadDataAndLayoutUpdateNeeded:(BOOL)layoutNeeded;
 
 - (CHTileView *)dequeueReusableTileWithIdentifier:(NSString *)identifier;
+
 - (CHTileView *)tileForIndexPath:(CHGridIndexPath)indexPath;
 - (CHGridIndexPath)indexPathForPoint:(CGPoint)point;
 
 - (void)scrollToTileAtIndexPath:(CHGridIndexPath)indexPath animated:(BOOL)animated;
-
 - (void)deselectTileAtIndexPath:(CHGridIndexPath)indexPath;
 - (void)deselectSelectedTile;
 

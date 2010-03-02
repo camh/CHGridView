@@ -8,9 +8,9 @@
 //  http://cameron.io/project/chgridview
 //
 
-#import "CHSectionTitleView.h"
+#import "CHSectionHeaderView.h"
 
-@implementation CHSectionTitleView
+@implementation CHSectionHeaderView
 @synthesize section, title, yCoordinate;
 
 - (id)initWithFrame:(CGRect)frame {

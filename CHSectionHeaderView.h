@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CHSectionTitleView : UIView {
+@interface CHSectionHeaderView : UIView {
 	UIView			*topLine;
 	
 	int				section;
