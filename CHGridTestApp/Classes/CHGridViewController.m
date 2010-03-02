@@ -62,11 +62,11 @@
 	
 	if(interfaceOrientation == UIInterfaceOrientationPortrait||
 	   interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown){
-		[myGridView setPerLine:3];
+		[myGridView setPerLine:4];
 	}
 	if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
 	   interfaceOrientation ==UIInterfaceOrientationLandscapeRight){
-		[myGridView setPerLine:4];
+		[myGridView setPerLine:5];
 	}
 	[myGridView reloadData];
 }

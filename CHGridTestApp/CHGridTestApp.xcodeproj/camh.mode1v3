@@ -271,7 +271,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>8</integer>
+									<integer>14</integer>
 									<integer>6</integer>
 									<integer>1</integer>
 									<integer>0</integer>
@@ -315,7 +315,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>README.markdown</string>
+								<string>CHImageTileView.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -323,11 +323,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>README.markdown</string>
+										<string>CHImageTileView.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>B1E7A170113D02B600253EE0</string>
+										<string>B1E7A193113D194600253EE0</string>
 										<key>history</key>
 										<array>
 											<string>B1E79E44113CF25400253EE0</string>
@@ -336,13 +336,13 @@
 											<string>B1E7A0F2113CF8F900253EE0</string>
 											<string>B1E7A0F9113CF92300253EE0</string>
 											<string>B1E7A107113CFA6400253EE0</string>
-											<string>B1E7A15F113D01DF00253EE0</string>
 											<string>B1E7A160113D01DF00253EE0</string>
 											<string>B1E7A168113D026E00253EE0</string>
-											<string>B1E7A16D113D02B600253EE0</string>
-											<string>B1E7A16E113D02B600253EE0</string>
 											<string>B1E7A16F113D02B600253EE0</string>
-											<string>B1E7A167113D026E00253EE0</string>
+											<string>B1E7A186113D185600253EE0</string>
+											<string>B1E7A190113D190500253EE0</string>
+											<string>B1E7A191113D190500253EE0</string>
+											<string>B1E7A18C113D186A00253EE0</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -880,6 +880,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

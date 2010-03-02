@@ -53,11 +53,10 @@
 		newHeight = imageSize.height;
 	}
 	
-	if(rect.size.height > newHeight) topOffset += ceil((rect.size.height - imageSize.height) / 2);
-	if(rect.size.width > newWidth) leftOffset += ceil((rect.size.width - imageSize.width) / 2);
+	if(rect.size.height < newHeight) topOffset += ceil((rect.size.height - newHeight) / 2);
+	if(rect.size.width < newWidth) leftOffset += ceil((rect.size.width - newWidth) / 2);
 	
 	CGRect imageRect = CGRectMake(leftOffset, topOffset, newWidth, newHeight);
-	//[image drawInRect:imageRect];
 	
 	CGContextSaveGState(c);
 	CGContextTranslateCTM(c, 0.0f, rect.size.height + rect.origin.y);
