@@ -14,7 +14,7 @@
 #include <sys/types.h>  
 #include <sys/sysctl.h> 
 
-#define SLOW_DEVICE_PRELOAD 2.0f
+#define SLOW_DEVICE_PRELOAD 3.0f
 
 @implementation CHGridLayout
 @synthesize index, justTiles, gridWidth, contentHeight, padding, perLine, preLoadMultiplier, rowHeight, sectionTitleHeight;
@@ -142,7 +142,7 @@
 			float row = floorf(tile.indexPath.tileIndex / perLine);
 			int rowIndex = tile.indexPath.tileIndex - (row * perLine);
 			
-			float width = ceilf((gridWidth - rowXPadding) / perLine);
+			float width = floorf((gridWidth - rowXPadding) / perLine);
 			float height = rowHeight - padding.height;
 			
 			[tile setRect:CGRectMake(padding.width + (rowIndex * width) + (rowIndex * padding.width), row * rowHeight + y + padding.height, width, height)];

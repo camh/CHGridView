@@ -33,7 +33,7 @@
 	- (void)selectedTileAtIndexPath:(CHGridIndexPath)indexPath inGridView:(CHGridView *)gridView;
 	- (void)visibleTilesChangedTo:(int)tiles;
 	- (CGSize)sizeForTileAtIndex:(CHGridIndexPath)indexPath inGridView:(CHGridView *)gridView;
-	- (CHSectionHeaderView *)titleViewForHeaderOfSection:(int)section inGridView:(CHGridView *)gridView;
+	- (CHSectionHeaderView *)headerViewForSection:(int)section inGridView:(CHGridView *)gridView;
 @end
 
 @interface CHGridView : UIScrollView {

@@ -279,7 +279,6 @@
 			[self loadVisibleTileForIndexPath:tile.indexPath withRect:r];
 		}
 	}
-
 	
 	//if([[self delegate] respondsToSelector:@selector(visibleTilesChangedTo:)]) [[self delegate] visibleTilesChangedTo:visibleTiles.count];
 }
