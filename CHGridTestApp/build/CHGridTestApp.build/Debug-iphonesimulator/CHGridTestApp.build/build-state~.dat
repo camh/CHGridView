@@ -1,484 +1,0 @@
-TCHGridTestApp
-v7
-r0
-t289206853.301045
-cCheck dependencies
-cProcessInfoPlistFile /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app/Info.plist CHGridTestApp-Info.plist
-cCompileXIB /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/MainWindow.xib
-cCompileXIB /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/CHGridTestAppViewController.xib
-cProcessPCH /var/folders/2O/2O7XPaPHHECSTYYg0qdm+k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CHGridTestApp_Prefix-gifpwpvgxkeypzbcmjrrhwnarnvk/CHGridTestApp_Prefix.pch.gch CHGridTestApp_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/main.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridTestAppAppDelegate.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridLayout.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayout.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridLayoutSection.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayoutSection.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridLayoutTile.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayoutTile.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridView.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHImageTileView.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHImageTileView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHSectionHeaderView.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHSectionHeaderView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHTileView.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHTileView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridViewController.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk
-c000000004B84E90700000000000000EE
-t1267001607
-s238
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c000000004A821911000000000026EE30
-t1250040081
-s2551344
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000004A765094000000000027E880
-t1249267860
-s2615424
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004A7650820000000000001355
-t1249267842
-s4949
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
-c000000004A7C6E970000000000000788
-t1249668759
-s1928
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk/System/Library/Frameworks/UIKit.framework/UIKit
-c000000004A7C6F5900000000016721E0
-t1249668953
-s23536096
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk/usr/include/math.h
-c000000004748A10600000000000004B7
-t1195942150
-s1207
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk/usr/include/sys/sysctl.h
-c00000000476344C0000000000000795B
-t1197688000
-s31067
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk/usr/include/sys/types.h
-c00000000476344C1000000000000290F
-t1197688001
-s10511
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridLayout/CHGridLayout.h
-c000000004B86E10600000000000007FB
-t1267130630
-s2043
-i<Foundation/Foundation.h>
-i"CHTileView.h"
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridLayout/CHGridLayoutSection.h
-c000000004B82DABF00000000000001D7
-t1266866879
-s471
-i<Foundation/Foundation.h>
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridLayout/CHGridLayoutTile.h
-c000000004B82DAC30000000000000209
-t1266866883
-s521
-i<Foundation/Foundation.h>
-i"CHTileView.h"
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayout.m
-c000000004B8C83F10000000000001C7F
-t1267500017
-s7295
-i"CHGridLayout.h"
-i"CHGridLayoutTile.h"
-i"CHGridLayoutSection.h"
-i<sys/types.h>
-i<sys/sysctl.h>
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayoutSection.m
-c000000004B82DAC100000000000001E0
-t1266866881
-s480
-i"CHGridLayoutSection.h"
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayoutTile.m
-c000000004B85C7B000000000000002F8
-t1267058608
-s760
-i"CHGridLayoutTile.h"
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridView.m
-c000000004B8CB81A0000000000003610
-t1267513370
-s13840
-i"CHGridView.h"
-i"CHGridLayoutTile.h"
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHImageTileView.m
-c000000004B86FA460000000000000B33
-t1267137094
-s2867
-i<math.h>
-i"CHImageTileView.h"
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHSectionHeaderView.m
-c000000004B8C26F10000000000000DED
-t1267476209
-s3565
-i"CHSectionHeaderView.h"
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHTileView.h
-c000000004B86F7D10000000000000571
-t1267136465
-s1393
-i<UIKit/UIKit.h>
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHTileView.m
-c000000004B8B522B0000000000000B2B
-t1267421739
-s2859
-i"CHTileView.h"
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/CHGridTestAppViewController.xib
-c000000004B8CB8010000000000001A5D
-t1267513345
-s6749
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/CHGridTestApp_Prefix.pch
-c000000004B8CB80100000000000000C3
-t1267513345
-s195
-i<Foundation/Foundation.h>
-i<UIKit/UIKit.h>
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.h
-c000000004B8CBA8700000000000001EA
-t1267513991
-s490
-i<UIKit/UIKit.h>
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m
-c000000004B8CBABF0000000000000374
-t1267514047
-s884
-i"CHGridTestAppAppDelegate.h"
-i"CHGridTestAppViewController.h"
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridViewController.h
-c000000004B82ED490000000000000190
-t1266871625
-s400
-i<UIKit/UIKit.h>
-i"CHGridView.h"
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridViewController.m
-c000000004B8C4CAA0000000000000BCB
-t1267485866
-s3019
-i"CHGridViewController.h"
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/MainWindow.xib
-c000000004B8CB801000000000000268E
-t1267513345
-s9870
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridLayout.o
-t1267514052
-s32868
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridLayoutSection.o
-t1267514052
-s9168
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridLayoutTile.o
-t1267514052
-s11348
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridTestApp.LinkFileList
-c000000004B8CBAC20000000000000667
-t1267514050
-s1639
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridTestAppAppDelegate.o
-t2
-s0
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridView.o
-t1267514053
-s57216
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridViewController.o
-t1267514053
-s42500
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHImageTileView.o
-t1267514052
-s15652
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHSectionHeaderView.o
-t1267514053
-s22208
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHTileView.o
-t1267514053
-s22236
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/main.o
-t1267514052
-s5980
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app
-t2
-s0
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app.dSYM
-t2
-s0
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app/CHGridTestApp
-t2
-s0
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app/CHGridTestAppViewController.nib
-t1267514050
-s800
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app/Info.plist
-t1267514050
-s615
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app/MainWindow.nib
-t1267514051
-s1129
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app/PkgInfo
-t1267514050
-s8
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/main.m
-c000000004B8CB8010000000000000166
-t1267513345
-s358
-i<UIKit/UIKit.h>
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridView.h
-c000000004B8C4C920000000000000A99
-t1267485842
-s2713
-i<UIKit/UIKit.h>
-i"CHTileView.h"
-i"CHSectionHeaderView.h"
-i"CHGridLayout.h"
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHImageTileView.h
-c000000004B856E6C00000000000001EA
-t1267035756
-s490
-i<Foundation/Foundation.h>
-i"CHTileView.h"
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHSectionHeaderView.h
-c000000004B8C26EC0000000000000248
-t1267476204
-s584
-i<UIKit/UIKit.h>
-
-N/Users/camh/Desktop/Dropbox/Code/CHGridView/CHTileView.h
-c000000004B86F7D10000000000000571
-t1267136465
-s1393
-i<UIKit/UIKit.h>
-
-N/var/folders/2O/2O7XPaPHHECSTYYg0qdm+k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CHGridTestApp_Prefix-gifpwpvgxkeypzbcmjrrhwnarnvk/CHGridTestApp_Prefix.pch.gch
-t1267514052
-s13026768
-
-NCHGridTestApp-Info.plist
-c000000004B8CB801000000000000038D
-t1267513345
-s909
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies289206850#289206850#0(0"0(0#1#0"28992373579448432#0"0#
-
-CCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridLayout.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayout.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s289206852.428064
-e289206852.854849
-r1
-xCompileC
-xbuild/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridLayout.o
-x/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayout.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@96"Compile /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayout.m289206852#289206852#0(0"0(0#0#88"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayout.m5207057469560287232#2218"    cd /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-generated-files.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-own-target-headers.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-all-target-headers.hmap -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-project-headers.hmap -F/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/include -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources/i386 -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources -include /var/folders/2O/2O7XPaPHHECSTYYg0qdm+k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CHGridTestApp_Prefix-gifpwpvgxkeypzbcmjrrhwnarnvk/CHGridTestApp_Prefix.pch -c /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayout.m -o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridLayout.o0#
-
-CCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridLayoutSection.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayoutSection.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s289206852.448041
-e289206852.601597
-r1
-xCompileC
-xbuild/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridLayoutSection.o
-x/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayoutSection.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@103"Compile /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayoutSection.m289206852#289206852#0(0"0(0#0#95"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayoutSection.m4300907800#2232"    cd /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-generated-files.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-own-target-headers.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-all-target-headers.hmap -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-project-headers.hmap -F/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/include -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources/i386 -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources -include /var/folders/2O/2O7XPaPHHECSTYYg0qdm+k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CHGridTestApp_Prefix-gifpwpvgxkeypzbcmjrrhwnarnvk/CHGridTestApp_Prefix.pch -c /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayoutSection.m -o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridLayoutSection.o0#
-
-CCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridLayoutTile.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayoutTile.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s289206852.601706
-e289206852.704581
-r1
-xCompileC
-xbuild/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridLayoutTile.o
-x/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayoutTile.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@100"Compile /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayoutTile.m289206852#289206852#0(0"0(0#0#92"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayoutTile.m4300907800#2226"    cd /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-generated-files.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-own-target-headers.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-all-target-headers.hmap -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-project-headers.hmap -F/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/include -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources/i386 -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources -include /var/folders/2O/2O7XPaPHHECSTYYg0qdm+k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CHGridTestApp_Prefix-gifpwpvgxkeypzbcmjrrhwnarnvk/CHGridTestApp_Prefix.pch -c /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridLayout/CHGridLayoutTile.m -o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridLayoutTile.o0#
-
-CCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridTestAppAppDelegate.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s289206852.332974
-e289206852.427964
-r0
-xCompileC
-xbuild/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridTestAppAppDelegate.o
-x/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m:12:40: error: CHGridTestAppViewController.h: No such file or directory
-o/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m:17: error: no declaration of property 'viewController' found in the interface
-o/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m: In function '-[CHGridTestAppAppDelegate application:didFinishLaunchingWithOptions:]':
-o/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m:22: warning: receiver 'CHGridViewController' is a forward class and corresponding @interface may not exist
-o/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m:26: error: request for member 'view' in something not a structure or union
-lSLF07#2@100"Compile /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m289206852#289206852#0(883"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m:12:40: error: CHGridTestAppViewController.h: No such file or directory/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m:17: error: no declaration of property 'viewController' found in the interface/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m: In function '-[CHGridTestAppAppDelegate application:didFinishLaunchingWithOptions:]':/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m:22: warning: receiver 'CHGridViewController' is a forward class and corresponding @interface may not exist/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m:26: error: request for member 'view' in something not a structure or union4(4@56"CHGridTestAppViewController.h: No such file or directory289206852#0#164#0(6@92"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m289206847#12#0#12#0#28"*: No such file or directory0(4@66"No declaration of property 'viewController' found in the interface289206852#164#171#0(6@92"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m289206847#17#0#17#0#0"0(22@93"Receiver 'CHGridViewController' is a forward class and corresponding @interface may not exist289206852#515#200#0(6@92"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m289206847#22#0#22#0#0"0(4@63"Request for member 'view' in something not a structure or union289206852#715#168#0(6@92"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m289206847#26#0#26#0#0"0(0#0#92"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m4300907800#2234"    cd /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-generated-files.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-own-target-headers.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-all-target-headers.hmap -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-project-headers.hmap -F/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/include -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources/i386 -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources -include /var/folders/2O/2O7XPaPHHECSTYYg0qdm+k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CHGridTestApp_Prefix-gifpwpvgxkeypzbcmjrrhwnarnvk/CHGridTestApp_Prefix.pch -c /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridTestAppAppDelegate.m -o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridTestAppAppDelegate.o1#
-
-CCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridView.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s289206852.704687
-e289206853.145210
-r1
-xCompileC
-xbuild/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridView.o
-x/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@81"Compile /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridView.m289206852#289206853#0(0"0(0#0#73"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridView.m4300907800#2201"    cd /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-generated-files.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-own-target-headers.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-all-target-headers.hmap -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-project-headers.hmap -F/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/include -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources/i386 -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources -include /var/folders/2O/2O7XPaPHHECSTYYg0qdm+k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CHGridTestApp_Prefix-gifpwpvgxkeypzbcmjrrhwnarnvk/CHGridTestApp_Prefix.pch -c /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHGridView.m -o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridView.o0#
-
-CCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridViewController.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s289206853.149987
-e289206853.296025
-r1
-xCompileC
-xbuild/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridViewController.o
-x/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@96"Compile /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridViewController.m289206853#289206853#0(0"0(0#0#88"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridViewController.m4300907800#2226"    cd /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-generated-files.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-own-target-headers.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-all-target-headers.hmap -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-project-headers.hmap -F/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/include -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources/i386 -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources -include /var/folders/2O/2O7XPaPHHECSTYYg0qdm+k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CHGridTestApp_Prefix-gifpwpvgxkeypzbcmjrrhwnarnvk/CHGridTestApp_Prefix.pch -c /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/Classes/CHGridViewController.m -o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHGridViewController.o0#
-
-CCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHImageTileView.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHImageTileView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s289206852.854951
-e289206852.981358
-r1
-xCompileC
-xbuild/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHImageTileView.o
-x/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHImageTileView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@86"Compile /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHImageTileView.m289206852#289206852#0(0"0(0#0#78"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHImageTileView.m4300907800#2211"    cd /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-generated-files.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-own-target-headers.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-all-target-headers.hmap -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-project-headers.hmap -F/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/include -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources/i386 -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources -include /var/folders/2O/2O7XPaPHHECSTYYg0qdm+k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CHGridTestApp_Prefix-gifpwpvgxkeypzbcmjrrhwnarnvk/CHGridTestApp_Prefix.pch -c /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHImageTileView.m -o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHImageTileView.o0#
-
-CCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHSectionHeaderView.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHSectionHeaderView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s289206852.981459
-e289206853.149864
-r1
-xCompileC
-xbuild/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHSectionHeaderView.o
-x/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHSectionHeaderView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@90"Compile /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHSectionHeaderView.m289206852#289206853#0(0"0(0#0#82"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHSectionHeaderView.m4300907800#2219"    cd /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-generated-files.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-own-target-headers.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-all-target-headers.hmap -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-project-headers.hmap -F/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/include -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources/i386 -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources -include /var/folders/2O/2O7XPaPHHECSTYYg0qdm+k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CHGridTestApp_Prefix-gifpwpvgxkeypzbcmjrrhwnarnvk/CHGridTestApp_Prefix.pch -c /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHSectionHeaderView.m -o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHSectionHeaderView.o0#
-
-CCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHTileView.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHTileView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s289206853.145312
-e289206853.300944
-r1
-xCompileC
-xbuild/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHTileView.o
-x/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHTileView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@81"Compile /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHTileView.m289206853#289206853#0(0"0(0#0#73"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHTileView.m4300907800#2201"    cd /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-generated-files.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-own-target-headers.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-all-target-headers.hmap -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-project-headers.hmap -F/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/include -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources/i386 -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources -include /var/folders/2O/2O7XPaPHHECSTYYg0qdm+k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CHGridTestApp_Prefix-gifpwpvgxkeypzbcmjrrhwnarnvk/CHGridTestApp_Prefix.pch -c /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/../CHTileView.m -o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/CHTileView.o0#
-
-CCompileC build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/main.o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s289206852.331946
-e289206852.447922
-r1
-xCompileC
-xbuild/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/main.o
-x/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/main.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@72"Compile /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/main.m289206852#289206852#0(0"0(0#0#64"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/main.m4300907800#2186"    cd /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-generated-files.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-own-target-headers.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-all-target-headers.hmap -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-project-headers.hmap -F/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/include -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources/i386 -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources -include /var/folders/2O/2O7XPaPHHECSTYYg0qdm+k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CHGridTestApp_Prefix-gifpwpvgxkeypzbcmjrrhwnarnvk/CHGridTestApp_Prefix.pch -c /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/main.m -o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/Objects-normal/i386/main.o0#
-
-CCompileXIB /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/CHGridTestAppViewController.xib
-s289206850.550372
-e289206851.015467
-r1
-xCompileXIB
-x/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/CHGridTestAppViewController.xib
-lSLF07#2@42"CompileXIB CHGridTestAppViewController.xib289206850#289206851#0(0"0(0#0#89"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/CHGridTestAppViewController.xib4300907800#577"    cd /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.1    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app/CHGridTestAppViewController.nib /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/CHGridTestAppViewController.xib0#
-
-CCompileXIB /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/MainWindow.xib
-s289206850.546732
-e289206851.027758
-r1
-xCompileXIB
-x/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/MainWindow.xib
-lSLF07#2@25"CompileXIB MainWindow.xib289206850#289206851#0(0"0(0#0#72"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/MainWindow.xib4300907800#543"    cd /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.1    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app/MainWindow.nib /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/MainWindow.xib0#
-
-CGenerateDSYMFile /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app.dSYM /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app/CHGridTestApp
-r0
-
-CLd /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app/CHGridTestApp normal i386
-r0
-
-CProcessInfoPlistFile /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app/Info.plist CHGridTestApp-Info.plist
-s289206850.539826
-e289206850.546639
-r1
-xProcessInfoPlistFile
-x/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app/Info.plist
-xCHGridTestApp-Info.plist
-lSLF07#2@32"Process CHGridTestApp-Info.plist289206850#289206850#0(0"0(0#0#82"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/CHGridTestApp-Info.plist32651513917341812#554"    cd /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility CHGridTestApp-Info.plist -genpkginfo /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app/Info.plist0#
-
-CProcessPCH /var/folders/2O/2O7XPaPHHECSTYYg0qdm+k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CHGridTestApp_Prefix-gifpwpvgxkeypzbcmjrrhwnarnvk/CHGridTestApp_Prefix.pch.gch CHGridTestApp_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-s289206851.028003
-e289206852.331782
-r1
-xProcessPCH
-x/var/folders/2O/2O7XPaPHHECSTYYg0qdm+k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CHGridTestApp_Prefix-gifpwpvgxkeypzbcmjrrhwnarnvk/CHGridTestApp_Prefix.pch.gch
-xCHGridTestApp_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@35"Precompile CHGridTestApp_Prefix.pch289206851#289206852#0(0"0(0#0#82"/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/CHGridTestApp_Prefix.pch4300907800#2053"    cd /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-generated-files.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-own-target-headers.hmap -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-all-target-headers.hmap -iquote /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/CHGridTestApp-project-headers.hmap -F/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/include -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources/i386 -I/Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/CHGridTestApp.build/Debug-iphonesimulator/CHGridTestApp.build/DerivedSources -c /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/CHGridTestApp_Prefix.pch -o /var/folders/2O/2O7XPaPHHECSTYYg0qdm+k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/CHGridTestApp_Prefix-gifpwpvgxkeypzbcmjrrhwnarnvk/CHGridTestApp_Prefix.pch.gch0#
-
-CTouch /Users/camh/Desktop/Dropbox/Code/CHGridView/CHGridTestApp/build/Debug-iphonesimulator/CHGridTestApp.app
-r0
-
