@@ -342,7 +342,7 @@
 	CHSectionHeaderView *headerView = nil;
 	
 	for(CHSectionHeaderView *header in visibleSectionHeaders){
-		if([headerView section] == section) headerView = header;
+		if([header section] == section) headerView = header;
 	}
 	
 	return headerView;
